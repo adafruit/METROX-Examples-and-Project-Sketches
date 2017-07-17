@@ -1,6 +1,8 @@
-/* Metro (and Metro Express) Theremin
- * 7 July 2017
- * by Adafruit Industries. support open source, buy Adafruit!
+/*
+ * (PROJ01) Metro (and Metro Express) Theremin
+ * Desc: Super basic theremin using a light sensor and a piezo element
+ * 
+ * by Brent Rubell for Adafruit Industries.
 */
 
 int piezoPin = 9;

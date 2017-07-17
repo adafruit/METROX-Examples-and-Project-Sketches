@@ -1,12 +1,10 @@
-/* Adafruit Metro (and Metro Express!) Fidget Spinner Tachometer 
- * for Experimenters Guide, QUEST02 
+/*
+ * (PROJ02) Metro (and Metro Express!) Fidget Spinner Tachometer
+ * Desc: Count fidget spinner RPMs (and beat your high scores)
  * 
  * Original code by Tony Dicola for Adafruit Industries
- * Modified for Metro/Metro Express Explorers Guide
- * 
- * This circuit uses the a beam-break orientation:
- * LED||Spinner||Light Sensor
- */
+ * by Brent Rubell and Asher Lieber for the Metro Explorers Guide
+*/
 
 // include the LCD library code:
 #include <LiquidCrystal.h>

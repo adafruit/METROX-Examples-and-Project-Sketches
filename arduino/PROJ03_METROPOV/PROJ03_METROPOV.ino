@@ -1,11 +1,9 @@
-/* MetroPOV - Persistence of Vision Display
- *  for Adafruit Metro (and Metro Express)
- *  
- *  Circuit: 8x 5mm LEDs, 8x 560ohm Resistors
- *  
- *  07.07.17
- *  by Adafruit Industries. support open source, buy Adafruit!
- */
+/*
+ * (PROJ03) Metro (and Metro Express) Persistence of Vision Display
+ * Desc: POV display for Metro & Metro Express using 7x LEDs and 7x 560ohm Resistors 
+ * 
+ * by Brent Rubell for Adafruit Industries. Support Open Source, buy Adafruit!
+*/
 
 int spacer[8][5] = {
   {0, 0, 0, 0, 0},
