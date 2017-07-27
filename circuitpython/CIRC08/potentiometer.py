@@ -1,21 +1,22 @@
 # CIRC08 - Twisting
-# (Circuit Python)
+# (CircuitPython)
+# this circuit was designed for use with the Metro Express Explorers Guide on Learn.Adafruit.com
 
-from digitalio import *
-from analogio import *
-from board import *
-from pulseio import *
+# by Limor Fried/Ladyada for Adafruit Industries.
+
+import digitalio
+import analogio
+import board
 import time
 
-Direction = DigitalInOut.direction  
-
-led = DigitalInOut(D13)
+led = digitalio.DigitalInOut(board.D13)
 led.switch_to_output()
-pot = AnalogIn(A0)
+pot = analogio.AnalogIn(A0)
 
 sensorval = 0
 
 while True:
+    # potentiometer value/max potentiometer value
     sensorval = pot.value / 65536
     print(sensorval)
     led.value = True

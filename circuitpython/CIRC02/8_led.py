@@ -1,25 +1,30 @@
 # CIRC02 - LED Fun
-# (Circuit Python)
+# (CircuitPython)
+# this circuit was designed for use with the Metro Express Explorers Guide on Learn.Adafruit.com
 
+# by Limor Fried/Ladyada and Asher Lieber for Adafruit Industries
+
+# import required libraries
 import digitalio
 import pulseio
-from board import *
+import board
 import time
 
-ledpins = [ digitalio.DigitalInOut(D2),
-            digitalio.DigitalInOut(D3),
-            digitalio.DigitalInOut(D4),
-            digitalio.DigitalInOut(D5),
-            digitalio.DigitalInOut(D6),
-            digitalio.DigitalInOut(D7),
-            digitalio.DigitalInOut(D8),
-            digitalio.DigitalInOut(D9) ]
+# create a list of DigitalInOut objects using pins 2-9
+ledpins = [ digitalio.DigitalInOut(board.D2),
+            digitalio.DigitalInOut(board.D3),
+            digitalio.DigitalInOut(board.D4),
+            digitalio.DigitalInOut(board.D5),
+            digitalio.DigitalInOut(board.D6),
+            digitalio.DigitalInOut(board.D7),
+            digitalio.DigitalInOut(board.D8),
+            digitalio.DigitalInOut(board.D9) ]
 
-# setup!
-
+# switch all pins to output
 for pin in ledpins:
     pin.switch_to_output()
 
+# turns on one LED after another without a loop
 def oneAfterAnotherNoLoop():
     delayTime = 0.1
     
@@ -57,12 +62,15 @@ def oneAfterAnotherNoLoop():
     ledpins[0].value = False
     time.sleep(delayTime)
 
+# turns on one LED after another with a loop
 def oneAfterAnotherLoop():
     delayTime = 0.1
+    # iterates through ledpins list
     for led in ledpins:
         led.value = True
         time.sleep(delayTime)
-    for led in ledpins[::-1]:     # reverse() doesnt work
+    # iterates through ledpins list backwards
+    for led in ledpins[::-1]:
         led.value = False
         time.sleep(delayTime)
 
@@ -105,7 +113,8 @@ def inAndOut():
         ledpins[offLED1].value = False
         ledpins[offLED2].value = False
         time.sleep(delayTime)
-# loop
+
+# loop forever
 while True:
     #oneAfterAnotherNoLoop()
     #oneAfterAnotherLoop()

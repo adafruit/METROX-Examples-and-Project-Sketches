@@ -1,10 +1,16 @@
 # CIRC01 - Blinking LED
-# (Circuit Python)
+# (CircuitPython)
+# this circuit was designed for use with the Metro Express Explorers Guide on Learn.Adafruit.com
 
+# by Limor Fried/Ladyada and Asher Lieber for Adafruit Industries.
+
+
+#import required libraries
 import digitalio
 import board
 import time
 
+# create a DigitalInOut object
 led = digitalio.DigitalInOut(board.D13)
 # LED pin should be used as an output 
 led.switch_to_output()

@@ -1,9 +1,17 @@
+# PROJ02 - Fidget Spinner Tachometer
+# (CircuitPython)
+# this circuit was designed for use with the Metro Express Explorers Guide on Learn.Adafruit.com
+
+# by Asher Lieber for Adafruit Industries
+
 import board
 import time
 import digitalio
 import analogio
 import adafruit_character_lcd as LCD
 
+# setting up the LCD 
+#    {
 lcd_columns = 16
 lcd_rows = 2
 lcd_rs = digitalio.DigitalInOut(board.D7)
@@ -14,6 +22,7 @@ lcd_d5 = digitalio.DigitalInOut(board.D10)
 lcd_d4 = digitalio.DigitalInOut(board.D9)
 lcd_backlight = digitalio.DigitalInOut(board.D13)
 lcd = LCD.cirpyth_char_lcd(lcd_rs, lcd_en, lcd_d4, lcd_d5, lcd_d6, lcd_d7, lcd_columns, lcd_rows, lcd_backlight)
+#    }
 
 light = analogio.AnalogIn(board.A0)
 led   = digitalio.DigitalInOut(board.D4)
@@ -59,19 +68,18 @@ led.value = True
 # while True:
 # high_score = 0
 
+# adds zeros for prettier output
 def add_z(strn, digits):
     if len(strn) == digits: return strn
     else:
         ret = ''
         for i in range(digits-len(strn)):
-        # for i in range(digits-len(strn), -1, -1):
             ret += '0'
     return ret + strn
 
 def spin():
     vals = []
     high_score = 0
-    # for i in range(20):
     while True:
         time.sleep(1)
 
@@ -125,4 +133,3 @@ def spin():
     return vals
             # time.sleep(1)
 spin()
-

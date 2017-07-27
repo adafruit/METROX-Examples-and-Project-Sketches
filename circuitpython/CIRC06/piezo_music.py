@@ -1,15 +1,21 @@
 # CIRC06 - Music with Piezo 
 # (Circuit Python)
+# this circuit was designed for use with the Metro Express Explorers Guide on Learn.Adafruit.com 
 
+# by Limor Fried/Ladyada and Asher Lieber for Adafruit Industries.             
+
+# import required libraries
 import digitalio
 import pulseio
-from board import *
+import board
 import time
 
-piezoPin = D9
+piezoPin = board.D9
+# create a PWMOut object for piezo
 piezo = pulseio.PWMOut(piezoPin, frequency = 440, duty_cycle = 0, variable_frequency=True)
 
-notes = 'ccdcfeccdcgf ' # a space represents a rest
+# a space represents a rest
+notes = 'ccdcfeccdcgf ' 
 beats = [ 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 2, 4]
 #notes = 'ccggaagffeeddc ' # a space represents a rest
 #beats = [ 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 2, 4 ]
@@ -21,16 +27,19 @@ tones = {'c': 261.625,
          'a': 440,
          'b': 493.885,
          'C': 523.25}
-tempo = 300   # bpm
+# bpm
+tempo = 300
 
 
 def playTone(tone, duration):
     piezo.frequency = int(tone)
     print(' ->', tone)
-    piezo.duty_cycle = 65536 // 2  # half of max
+    # half of max
+    piezo.duty_cycle = 65536 // 2
     time.sleep(duration)
     piezo.duty_cycle = 0
 
+# play the notes!
 for i in range(len(notes)):
     tempodelay = 60 / tempo
 

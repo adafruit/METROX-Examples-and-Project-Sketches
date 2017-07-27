@@ -1,3 +1,9 @@
+# CIRC15 - IR Sensor make it better rgb
+# (CircuitPython)
+# this circuit was designed for use with the Metro Express Explorers Guide on Learn.Adafruit.com
+
+# by Asher Lieber for Adafruit Industries
+
 import board
 import digitalio
 import IRrecvPCI
@@ -9,15 +15,24 @@ LEDs = [digitalio.DigitalInOut(board.D4), digitalio.DigitalInOut(board.D1), digi
 for i in LEDs:
     i.switch_to_output()
 
-RED     = [True, False, False]   # only red
-GREEN   = [False, True, False]   # only green
-BLUE    = [False, False, True]   # only blue
-YELLOW  = [True, True, False]    # red+green
-CYAN    = [False, True, True]    # green+blue
-MAGENTA = [True, False, True]    # red+blue
-WHITE   = [True, True, True]     # all on
-BLACK   = [False, False, False]  # all off
+# only red
+RED     = [True, False, False]  
+# only green
+GREEN   = [False, True, False]  
+# only blue
+BLUE    = [False, False, True]  
+# red+green
+YELLOW  = [True, True, False]   
+# green+blue
+CYAN    = [False, True, True]   
+# red+blue
+MAGENTA = [True, False, True]   
+# all on
+WHITE   = [True, True, True]    
+# all off
+BLACK   = [False, False, False] 
 
+# dict of button values and their corresponding colors
 buttons = {
 16582903: RED ,
 16615543: GREEN,
@@ -50,5 +65,6 @@ while True:
     tmp = get_signal()
     if tmp in buttons:
         set_color(buttons[tmp])
+    # if none of the mapped buttons were pressed, turn LED off
     else:
         set_color(BLACK)

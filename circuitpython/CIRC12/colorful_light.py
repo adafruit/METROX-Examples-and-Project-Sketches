@@ -1,32 +1,41 @@
 # CIRC12 - Colorful Light
-# (Circuit Python)
+# (CircuitPython)
+# this circuit was designed for use with the Metro Express Explorers Guide on Learn.Adafruit.com
 
-from digitalio import *
-from pulseio import *
-from board import *
+# by Limor Fried/Ladyada for Adafruit Industries
+
+import digitalio
+import pulseio
+import board
 import time
-Direction = DigitalInOut.direction
 
-redLED = DigitalInOut(D9)
-greenLED = DigitalInOut(D10)
-blueLED = DigitalInOut(D11)
+redLED = digitalio.DigitalInOut(board.D9)
+greenLED = digitalio.DigitalInOut(board.D10)
+blueLED = digitalio.DigitalInOut(board.D11)
 
 RGBLED = [redLED, greenLED, blueLED]
-
-RED     = [True, False, False]   # only red
-GREEN   = [False, True, False]   # only green
-BLUE    = [False, False, True]   # only blue
-YELLOW  = [True, True, False]    # red+green
-CYAN    = [False, True, True]    # green+blue
-MAGENTA = [True, False, True]    # red+blue
-WHITE   = [True, True, True]     # all on
-BLACK   = [False, False, False]  # all off
+# only red
+RED     = [True, False, False]
+# only green
+GREEN   = [False, True, False]
+# only blue
+BLUE    = [False, False, True]
+# red+green
+YELLOW  = [True, True, False]
+# green+blue
+CYAN    = [False, True, True]
+# red+blue
+MAGENTA = [True, False, True]
+# all on
+WHITE   = [True, True, True]
+# all off
+BLACK   = [False, False, False]
 
 colors = [RED, GREEN, BLUE, YELLOW, CYAN, MAGENTA, WHITE, BLACK]
 
+# switch to output
 for led in RGBLED:
-    led.direction = Direction.OUTPUT
-
+    led.switch_to_output()
 
 def setColor(color):
     RGBLED[0].value = not color[0]

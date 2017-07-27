@@ -4,14 +4,18 @@
 
 # by Limor Fried/Ladyada for Adafruit Industries.
 
+import board
 import digitalio
 import analogio
-import board
-import pulseio
-import time
 
-led = pulseio.PWMOut(board.D9)
+led = digitalio.DigitalInOut(board.D13)
+led.switch_to_output()
 pot = analogio.AnalogIn(board.A0)
 
+threshold = 10000
+
 while True:
-    led.duty_cycle = pot.value
+    if pot.value > threshold:
+        led.value = True
+    else:
+        led.value = False

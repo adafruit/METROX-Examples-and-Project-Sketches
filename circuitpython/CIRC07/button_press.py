@@ -1,5 +1,8 @@
 # CIRC07 - Button Pressing
 # (Circuit Python)
+# this circuit was designed for use with the Metro Express Explorers Guide on Learn.Adafruit.com
+
+# by Limor Fried/Ladyada for Adafruit Industries.
 
 import digitalio
 from board import *

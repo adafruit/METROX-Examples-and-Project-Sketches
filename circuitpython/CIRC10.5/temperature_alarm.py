@@ -1,15 +1,18 @@
+# CIRC10 - Temperature Alarm
+# (Circuit Python)
+# this circuit was designed for use with the Metro Express Explorers Guide on Learn.Adafruit.com
+
+# by Asher Lieber for Adafruit Industries.
+
 import analogio
 import pulseio
 import board
 import time
 
-piezo = pulseio.PWMOut(board.D8, frequency = 440, duty_cycle = 0, variable_f
-requency = True)
-
+piezo = pulseio.PWMOut(board.D8, frequency = 440, duty_cycle = 0, variable_frequency = True)
 temp = analogio.AnalogIn(board.A0)
 
 freezing_temp = 0 
-
 boiling_temp = 100 
 
 # affine transformation

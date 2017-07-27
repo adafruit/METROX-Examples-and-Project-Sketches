@@ -1,15 +1,21 @@
-from digitalio import *                    
-from board import *
-from pulseio import *                      
+# CIRC07 - Button Pressing make it better pwm
+# (CircuitPython)                                                                                  
+# this circuit was designed for use with the Metro Express Explorers Guide on Learn.Adafruit.com    
+                                                                                                    
+# by Limor Fried/Ladyada for Adafruit Industries.                                                   
+
+import digitalio
+import board
+import pulseio
 import time        
                    
 Direction = DigitalInOut.direction         
                    
-led = PWMOut(D9)   
-button1 = DigitalInOut(D2)                 
-button1.direction = Direction.IN           
-button2 = DigitalInOut(D3)                 
-button2.direction = Direction.IN           
+led = pulseio.PWMOut(board.D9)   
+button1 = digitalio.DigitalInOut(board.D2)                 
+button1.switch_to_input()
+button2 = digitalio.DigitalInOut(board.D3)                 
+button1.switch_to_input()
                    
 while True:        
     brightness = led.duty_cycle            

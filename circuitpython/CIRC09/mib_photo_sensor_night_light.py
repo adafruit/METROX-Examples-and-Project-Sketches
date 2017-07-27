@@ -1,15 +1,20 @@
-# CIRC09 - Light
+# CIRC09 - Light make it better night_light
 # (CircuitPython)
 # this circuit was designed for use with the Metro Express Explorers Guide on Learn.Adafruit.com
 
-# by Limor Fried/Ladyada for Adafruit Industries.
+# by Asher Lieber for Adafruit Industries.
 
 import analogio
-import pulseio
+#import pulseio
+import digitalio
 import board
 import time
 
-led = pulseio.PWMOut(board.D9)
+threshold = 60000
+
+# led = pulseio.PWMOut(board.D9)
+led = digitalio.DigitalInOut(board.D9)
+led.switch_to_output()
 light = analogio.AnalogIn(board.A0)
 
 # affine transfer/_map with constrained output
@@ -23,9 +28,7 @@ def _map(x, in_min, in_max, out_min, out_max):
         return max(min(ret, out_min), out_max)
 
 while True:
-    print(light.value)
-    # map reasonable light values to our LED brightness
-    mapped = _map(light.value, 20000, 65000, 0, 65535)
-    print(mapped)
-    # change brightness of LED
-    led.duty_cycle = int(mapped)
+    if light.value > threshold:
+        led.value = True
+    else:
+        led.value = False
