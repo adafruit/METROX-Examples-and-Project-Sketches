@@ -1,5 +1,5 @@
 /*
- * (PROJ02) Metro (and Metro Express!) Fidget Spinner Tachometer
+ * (PROJ04) Metro (and Metro Express!) Fidget Spinner Tachometer
  * Desc: Count fidget spinner RPMs (and beat your high scores)
  * 
  * Original code by Tony Dicola for Adafruit Industries

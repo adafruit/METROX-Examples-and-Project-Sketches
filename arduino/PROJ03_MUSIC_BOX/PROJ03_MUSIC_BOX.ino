@@ -1,5 +1,5 @@
 /*
-* Metro (and Metro Express!) Music Box
+* (PROJ03) Metro (and Metro Express!) Music Box
 * Desc: 21st century music box: Plays a melody when the box is open.
 * Circuit: Piezo, 16x2 LCD, Photo Light Sensor
 * 

@@ -31,14 +31,13 @@ void setup() {
 void loop() {
   // display red on the Metro Express neopixel
   pixelWrite(RED);
-  delay(20);
+  delay(1000);
   // display white on the Metro Express neopixel
-  // this is a HTML color picker format, if you want to use it (see: https://www.w3schools.com/colors/colors_picker.asp)
-  metroPixel.setPixelColor(0, 0xFF0000); 
-  delay(20);
+  pixelWrite(WHITE);
+  delay(1000);
   // display blue on the Metro Express neopixel
   pixelWrite(BLUE);
-  delay(20);
+  delay(1000);
   
   // Sparkle the Neopixel 
   // pixelSparkle();

@@ -3,7 +3,7 @@
  * CIRC15: IR Sensor 
  * 
  * Desc: Turns on and off a 5mm Red LED with Mini Remote (NEC)
- * by Adafruit Industries.   Support Open Source, buy Adafruit!
+ * by Brent Rubell for Adafruit Industries.   Support Open Source, buy Adafruit!
  * 
  * Note: this sketch requires IRLIB2.x
  */
