@@ -58,9 +58,4 @@ def randomColor():
     c = urandom.randrange(len(colors))
     setColor(colors[c])
 
-# loop forever
-while True:
-    #randomColor()
-    for color in colors:
-        setColor(color)
-        time.sleep(0.5)
+setColor(GREEN)

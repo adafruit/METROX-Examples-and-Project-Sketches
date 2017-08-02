@@ -12,7 +12,7 @@ sensor = analogio.AnalogIn(board.A0)
 
 
 # affine transfer/map with constrained output
-def map(x, in_min, in_max, out_min, out_max):
+def _map(x, in_min, in_max, out_min, out_max):
     outrange = float(out_max - out_min)
     inrange = float(in_max - in_min)
     ret = (x - in_min) * (outrange / inrange) + out_min
@@ -23,7 +23,7 @@ def map(x, in_min, in_max, out_min, out_max):
 
 def getVoltage(p_sensor):
     # map value from photo sensor to voltage
-    v = map(p_sensor.value, 0, 65535, 0, 3.3)
+    v = _map(p_sensor.value, 0, 65535, 0, 3.3)
     return v
 
 # loop forever

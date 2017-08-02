@@ -1,3 +1,9 @@
+# PROJ05 - Metro Media Controller
+# (CircuitPython)
+# this circuit was designed for use with the Metro Express Explorers Guide on Learn.Adafruit.com
+
+# by Asher Lieber for Adafruit Industries.
+
 import board
 from adafruit_hid import keyboard
 
@@ -6,6 +12,7 @@ import IRrecvPCI
 import IRLib_P01_NECd
 
 import digitalio
+import time
 
 
 # set this to True if you're using a mac computer
@@ -91,7 +98,7 @@ def get_signal():
         pass
     recvr.enableIRIn()
     dec.decode()
-    print(dec.value)
+    # print(dec.value)
     return dec.value
 
 while True:
@@ -105,7 +112,9 @@ while True:
     else:
         # flash a warning
         for i in range(10):
+            time.sleep(.2)
             built_in_led.value = not built_in_led.value
 
     # turn LED off after command has been completed
+    time.sleep(.1)
     built_in_led.value = False
