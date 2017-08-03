@@ -1,4 +1,4 @@
-# CIRC19 - Adding USB Control
+# CIRC18 - Adding USB Control
 # this circuit was designed for use with the Metro Express Explorers Guide on Learn.Adafruit.com
 
 # by Asher Lieber for Adafruit Industries
