@@ -1,6 +1,6 @@
 /*
  * Metro Explorers Guide
- * CIRC15: IR Sensor 
+ * CIRC16: IR Sensor 
  * 
  * Desc: Turns on and off a 5mm Red LED with Mini Remote (NEC)
  * by Brent Rubell for Adafruit Industries.   Support Open Source, buy Adafruit!
