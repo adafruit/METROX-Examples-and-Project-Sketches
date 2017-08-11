@@ -11,6 +11,7 @@ import digitalio
 import IRrecvPCI
 import IRLib_P01_NECd
 import time
+from simpleio import Servo
 
 import urandom
 
@@ -37,10 +38,7 @@ BUTTON_6 = 0xfd6897
 BUTTON_7 = 0xfd18e7
 BUTTON_8 = 0xfd9867
 
-# servo = pulseio.PWMOut(board.D9, frequency=50)
-servo = pulseio.PWMOut(board.D6, frequency=50)
-servo_min = .5
-servo_max = 2.5
+servo = Servo(board.D9)
 
 # laser = digitalio.DigitalInOut(board.D13)
 # laser = digitalio.DigitalInOut(board.D3)
@@ -48,21 +46,11 @@ laser = digitalio.DigitalInOut(board.D2)
 laser.switch_to_output()
 continuous_laser_mode = True
 
-current_angle = 90
-
 # setting up IR reciever and decoder
 # recvr = IRrecvPCI.IRrecvPCI(board.D2)
 recvr = IRrecvPCI.IRrecvPCI(board.D10)
 recvr.enableIRIn()
 dec = IRLib_P01_NECd.IRdecodeNEC()
-
-def servo_angle(angle):
-    global current_angle
-    current_angle = max(min(angle, 180), 0)
-    pulse_width = servo_min + ((max(min(angle, 180), 0))/180)*(servo_max-servo_min)
-    # range is 0-20 ms
-    servo.duty_cycle = int((pulse_width/20)*65535)
-    print('now at angle: ' + str(current_angle))
 
 def get_signal():
     while not recvr.getResults():
@@ -73,7 +61,7 @@ def get_signal():
     return dec.value
 
 def rand_angle():
-    servo_angle(urandom.randint(0, 180))
+    servo.set_angle(urandom.randint(0, 180))
 while True:
     print(laser.value)
     if not continuous_laser_mode: laser.value = False
@@ -84,10 +72,10 @@ while True:
         rand_angle()
     elif tmp_signal == LEFT_ARROW:
         laser.value = True
-        servo_angle(current_angle - 10)
+        servo.set_angle(s.read() - 10)
     elif tmp_signal == RIGHT_ARROW:
         laser.value = True
-        servo_angle(current_angle + 10)
+        servo.set_angle(s.read() + 10)
     elif tmp_signal == BUTTON_9:
         laser.value = True
         while True:

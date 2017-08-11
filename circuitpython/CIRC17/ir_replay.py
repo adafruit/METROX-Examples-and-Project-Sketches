@@ -1,4 +1,4 @@
-# CIRC16 - IR Replay
+# CIRC17 - IR Replay
 # (CircuitPython)
 # this circuit was designed for use with the Metro Express Explorers Guide on Learn.Adafruit.com
 
@@ -31,7 +31,7 @@ def get_ir():
     recv.clear()
     while len(recv) == 0:
         pass
-    # time to collect more ir stuff
+    # time to collect
     time.sleep(.2) 
     print(len(recv))
     for i in range(len(recv)):
@@ -41,7 +41,7 @@ def get_ir():
     print('recieved')
     return ir_f
 
-def imitate_u(ir_f):
+def send_ir(ir_f):
     # enable_out()
     ir_led.duty_cycle = (2**16)//3 #???
     time.sleep(.4)
@@ -51,6 +51,7 @@ def imitate_u(ir_f):
     else:
         ir_led_send.send(ir_f)
     time.sleep(.5) # give some cooldown time
+    ir_led.duty_cycle = 0
 
 # so nothing devastating happens if play before record
 to_send = array.array('H')
@@ -71,5 +72,5 @@ while True:
             time.sleep(.05)
             led.value = not led.value
         if len(to_send) != 0:
-            imitate_u(to_send)
+            send_ir(to_send)
         led.value = False

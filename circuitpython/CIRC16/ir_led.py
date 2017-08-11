@@ -1,4 +1,4 @@
-# CIRC15 - IR Sensor
+# CIRC16 - IR Sensor
 # (CircuitPython)
 # this circuit was designed for use with the Metro Express Explorers Guide on Learn.Adafruit.com
 

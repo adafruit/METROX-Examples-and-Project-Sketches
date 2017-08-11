@@ -9,11 +9,9 @@ import digitalio
 import pulseio
 import board
 import time
+from simpleio import tone
 
-piezoPin = board.D9
-# create a PWMOut object for piezo
-piezo = pulseio.PWMOut(piezoPin, frequency = 440, duty_cycle = 0, variable_frequency=True)
-
+# d9
 # a space represents a rest
 notes = 'ccdcfeccdcgf ' 
 beats = [ 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 2, 4]
@@ -30,15 +28,6 @@ tones = {'c': 261.625,
 # bpm
 tempo = 300
 
-
-def playTone(tone, duration):
-    piezo.frequency = int(tone)
-    print(' ->', tone)
-    # half of max
-    piezo.duty_cycle = 65536 // 2
-    time.sleep(duration)
-    piezo.duty_cycle = 0
-
 # play the notes!
 for i in range(len(notes)):
     tempodelay = 60 / tempo
@@ -49,5 +38,5 @@ for i in range(len(notes)):
     if note == ' ':
         time.sleep(beat * tempodelay)
     else:
-        playTone(tones[note], beat*tempodelay)
+        tone(board.D9, tones[note], beat*tempodelay)
     time.sleep(tempodelay/2)

@@ -68,8 +68,8 @@ def changeLed(led, state):
     updateLEDs(led_state)
     
 # loop forever
-while True:
-    changeLed(3, True)
-    for i in range(0,256,1):
-        updateLEDs(i)
-        time.sleep(0.1)
+# while True:
+    # changeLed(3, True)
+    # for i in range(0,256,1):
+        # updateLEDs(i)
+        # time.sleep(0.1)

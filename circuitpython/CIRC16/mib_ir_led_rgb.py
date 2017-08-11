@@ -1,4 +1,4 @@
-# CIRC15 - IR Sensor make it better rgb
+# CIRC16 - IR Sensor make it better rgb
 # (CircuitPython)
 # this circuit was designed for use with the Metro Express Explorers Guide on Learn.Adafruit.com
 

@@ -9,6 +9,7 @@ import pulseio
 import board
 import time
 import urandom
+from simpleio import map_range
 
 # works: D4
 redLED = pulseio.PWMOut(board.D3)
@@ -38,21 +39,11 @@ BLACK   = [0,   0,   0]
 
 colors = [RED, ORANGE, YELLOW, GREEN, TEAL, BLUE, CYAN, MAGENTA, WHITE, BLACK]
 
-# affine transfer/map with constrained output
-def _map(x, in_min, in_max, out_min, out_max):
-    outrange = float(out_max - out_min)
-    inrange = float(in_max - in_min)
-    ret = (x - in_min) * (outrange / inrange) + out_min
-    if (out_max > out_min):
-        return max(min(ret, out_max), out_min)
-    else:
-        return max(min(ret, out_min), out_max)
-
 def setColor(color):
     print("Setting (%0.2f, %0.2f, %0.2f)" % (color[0], color[1], color[2]))
-    RGBLED[0].duty_cycle = int(_map(color[0], 0, 100, 65535, 0))
-    RGBLED[1].duty_cycle = int(_map(color[1], 0, 100, 65535, 0))
-    RGBLED[2].duty_cycle = int(_map(color[2], 0, 100, 65535, 0))
+    RGBLED[0].duty_cycle = int(map_range(color[0], 0, 100, 65535, 0))
+    RGBLED[1].duty_cycle = int(map_range(color[1], 0, 100, 65535, 0))
+    RGBLED[2].duty_cycle = int(map_range(color[2], 0, 100, 65535, 0))
 
 def randomColor():
     c = urandom.randrange(len(colors))

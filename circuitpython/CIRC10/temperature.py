@@ -7,23 +7,13 @@
 import board
 import analogio
 import time
+from simpleio import map_range
 
 sensor = analogio.AnalogIn(board.A0)
 
-
-# affine transfer/map with constrained output
-def _map(x, in_min, in_max, out_min, out_max):
-    outrange = float(out_max - out_min)
-    inrange = float(in_max - in_min)
-    ret = (x - in_min) * (outrange / inrange) + out_min
-    if (out_max > out_min):
-        return max(min(ret, out_max), out_min)
-    else:
-        return max(min(ret, out_min), out_max)
-
 def getVoltage(p_sensor):
     # map value from photo sensor to voltage
-    v = _map(p_sensor.value, 0, 65535, 0, 3.3)
+    v = map_range(p_sensor.value, 0, 65535, 0, 3.3)
     return v
 
 # loop forever

@@ -10,6 +10,7 @@ import digitalio
 import pulseio
 import time
 import adafruit_character_lcd as LCD
+from simpleio import tone
 
 # LCD setup
 lcd_columns = 16
@@ -29,8 +30,6 @@ note2 = [0,7,4,4,4,4,28,28]
 lcd.create_char(0, note)
 lcd.create_char(1, note2)
 
-piezo = pulseio.PWMOut(board.D6, frequency = 440, duty_cycle = 0, variable_frequency = True)
-
 light = analogio.AnalogIn(board.A0)
 
 tones = {'c': 261.625,
@@ -46,14 +45,6 @@ tempo = 300   # bpm
 
 notes = "ccdcfeccdcgf "
 beats = [ 1, 1, 1, 1,1,2,1,1,1,1,1,2,4]
-
-def playTone(tone, duration):
-    piezo.frequency = int(tone)
-    #print(" ->", tone)
-    # half of max
-    piezo.duty_cycle = 65536 // 2 
-    time.sleep(duration)
-    piezo.duty_cycle = 0
 
 tempodelay = 60/tempo
 while True:
@@ -76,5 +67,5 @@ while True:
             lcd.message(str(note))
             if note == ' ': time.sleep(beat * tempodelay)
             else:
-                playTone(tones[note], beat*tempodelay)
+                tone(board.D6, tones[note], beat*tempodelay)
             time.sleep(tempodelay/2)
