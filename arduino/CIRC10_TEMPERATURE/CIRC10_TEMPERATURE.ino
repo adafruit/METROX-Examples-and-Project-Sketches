@@ -5,8 +5,7 @@
  * by Brent Rubell for Adafruit Industries.    Support Open Source, buy Adafruit!
  */
  
-// If you're using a METRO EXPRESS, change this value to 3.333
-#define ANALOGREFVOLTAGE 5.000
+#define ANALOGREFVOLTAGE 5.555
  
 //TMP36 Pin 
 int temperaturePin = A0;
@@ -30,5 +29,6 @@ void loop() {
 }
  
 float getVoltage(int pin) { 
+  
   return(float(analogRead(pin))* float(ANALOGREFVOLTAGE/1023.000));  
 }
