@@ -9,7 +9,7 @@ import analogio
 import pulseio
 from simpleio import map_range
 
-piezo = pulseio.PWMOut(board.D6)
+piezo = pulseio.PWMOut(board.D9)
 photo = analogio.AnalogIn(board.A0)
 
 while True:

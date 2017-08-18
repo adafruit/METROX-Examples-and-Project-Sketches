@@ -11,17 +11,17 @@ import digitalio
 import array
 
 # 38 for NEC
-ir_led = pulseio.PWMOut(board.D9, frequency=1000*38, duty_cycle=0) 
+ir_led = pulseio.PWMOut(board.D3, frequency=1000*38, duty_cycle=0) 
 ir_led_send = pulseio.PulseOut(ir_led)
 
-recv = pulseio.PulseIn(board.D3, maxlen=150, idle_state = True)
+recv = pulseio.PulseIn(board.D2, maxlen=150, idle_state = True)
 
 # creating DigitalInOut objects for a record and play button
-but0 = digitalio.DigitalInOut(board.D11) # record
-but1 = digitalio.DigitalInOut(board.D10) # playback
+but0 = digitalio.DigitalInOut(board.D9) # record
+but1 = digitalio.DigitalInOut(board.D8) # playback
 
 # setting up indicator LED
-led = digitalio.DigitalInOut(board.D4)
+led = digitalio.DigitalInOut(board.D13)
 led.switch_to_output()
 
 # waits for IR to be detected, returns

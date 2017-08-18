@@ -67,5 +67,5 @@ while True:
             lcd.message(str(note))
             if note == ' ': time.sleep(beat * tempodelay)
             else:
-                tone(board.D6, tones[note], beat*tempodelay)
+                tone(board.D13, tones[note], beat*tempodelay)
             time.sleep(tempodelay/2)

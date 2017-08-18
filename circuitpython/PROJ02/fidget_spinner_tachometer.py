@@ -25,7 +25,7 @@ lcd = LCD.cirpyth_char_lcd(lcd_rs, lcd_en, lcd_d4, lcd_d5, lcd_d6, lcd_d7, lcd_c
 #    }
 
 light = analogio.AnalogIn(board.A0)
-led   = digitalio.DigitalInOut(board.D4)
+led   = digitalio.DigitalInOut(board.D2)
 led.switch_to_output()
 
 spinner_arms = 3

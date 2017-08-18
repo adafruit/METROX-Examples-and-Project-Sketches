@@ -10,7 +10,7 @@ import board
 import time
 from simpleio import map_range
 
-button = digitalio.DigitalInOut(board.D2)
+button = digitalio.DigitalInOut(board.D6)
 pot = analogio.AnalogIn(board.A0)
 
 m = mouse.Mouse()

@@ -9,8 +9,6 @@ import board
 import pulseio
 import time        
                    
-Direction = DigitalInOut.direction         
-                   
 led = pulseio.PWMOut(board.D9)   
 button1 = digitalio.DigitalInOut(board.D2)                 
 button1.switch_to_input()

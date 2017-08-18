@@ -12,9 +12,9 @@ import urandom
 from simpleio import map_range
 
 # works: D4
-redLED = pulseio.PWMOut(board.D3)
-greenLED = pulseio.PWMOut(board.D4)
-blueLED = pulseio.PWMOut(board.D5)
+redLED = pulseio.PWMOut(board.D9)
+greenLED = pulseio.PWMOut(board.D10)
+blueLED = pulseio.PWMOut(board.D11)
 
 RGBLED = [redLED, greenLED, blueLED]
 

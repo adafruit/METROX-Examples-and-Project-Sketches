@@ -12,6 +12,8 @@ import IRLib_P01_NECd # remote uses NEC
 
 LEDs = [digitalio.DigitalInOut(board.D4), digitalio.DigitalInOut(board.D1), digitalio.DigitalInOut(board.D2)]
 
+
+
 for i in LEDs:
     i.switch_to_output()
 
@@ -48,7 +50,7 @@ def set_color(color):
         LEDs[i].value = not color[i]
 
 
-recvr = IRrecvPCI.IRrecvPCI(board.D3)
+recvr = IRrecvPCI.IRrecvPCI(board.D6)
 recvr.enableIRIn()
 
 dec = IRLib_P01_NECd.IRdecodeNEC()

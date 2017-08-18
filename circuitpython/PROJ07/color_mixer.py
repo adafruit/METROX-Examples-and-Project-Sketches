@@ -4,17 +4,24 @@
 
 # by Asher Lieber for Adafruit Industries
 
-import adafruit_CircuitPython_RGB_LED as rgb
+import pulseio
 import board
 import analogio
 import digitalio
 import time
 from simpleio import map_range
 
-but = digitalio.DigitalInOut(board.D11)
+but = digitalio.DigitalInOut(board.D13)
 pot = analogio.AnalogIn(board.A0)
 
-rgb_led = rgb.rgb_led(board.D10, board.D9, board.D8)
+red_led   = pulseio.PWMOut(board.D9, duty_cycle=65535)
+green_led = pulseio.PWMOut(board.D11, duty_cycle=65535)
+blue_led  = pulseio.PWMOut(board.D10, duty_cycle=65535)
+
+def set_color(r, g, b):
+    red_led.duty_cycle = (65535-int(map_range(r, 0, 255, 0, 65535)))
+    green_led.duty_cycle = (65535-int(map_range(g, 0, 255, 0, 65535)))
+    blue_led.duty_cycle = (65535-int(map_range(b, 0, 255, 0, 65535)))
 
 # to keep track of the color we're currently adjusting
 current_color = 0
@@ -31,7 +38,7 @@ while True:
         # flash the color we're currently adjusting as an indicator
         current_rgb = [0,0,0]
         current_rgb[current_color] = 255
-        rgb_led.set_color(current_rgb[0], current_rgb[1], current_rgb[2])
+        set_color(current_rgb[0], current_rgb[1], current_rgb[2])
         # stop showing current color - show user mix
         current_rgb = c_r
         time.sleep(.2)
@@ -39,4 +46,4 @@ while True:
         print('current color is:')
         print(current_rgb)
     current_rgb[current_color] = map_range(pot.value, 130, 65400, 0, 255)
-    rgb_led.set_color(current_rgb[0], current_rgb[1], current_rgb[2])
+    set_color(current_rgb[0], current_rgb[1], current_rgb[2])

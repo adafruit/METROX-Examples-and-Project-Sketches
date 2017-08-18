@@ -12,10 +12,10 @@ import IRLib_P01_NECd
 # NEC button 1
 button_1 = 16582903
 
-led = digitalio.DigitalInOut(board.D6)
+led = digitalio.DigitalInOut(board.D11)
 led.switch_to_output()
 
-recvr = IRrecvPCI.IRrecvPCI(board.D3)
+recvr = IRrecvPCI.IRrecvPCI(board.D6)
 recvr.enableIRIn()
 
 dec = IRLib_P01_NECd.IRdecodeNEC()

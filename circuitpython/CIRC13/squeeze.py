@@ -9,7 +9,7 @@ import pulseio
 import analogio
 
 squeeze = analogio.AnalogIn(board.A2)
-led = pulseio.PWMOut(board.D9)
+led = pulseio.PWMOut(board.D10)
 
 # loop forever
 while True:

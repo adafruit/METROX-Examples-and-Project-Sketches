@@ -8,11 +8,11 @@ import digitalio
 import board
 import time
 
-led = DigitalInOut(board.D13)                    
+led = digitalio.DigitalInOut(board.D13)                    
 led.switch_to_output()
-button1 = DigitalInOut(board.D2)
+button1 = digitalio.DigitalInOut(board.D2)
 button1.switch_to_input()
-button2 = DigitalInOut(board.D3)
+button2 = digitalio.DigitalInOut(board.D3)
 button2.switch_to_input()
 
 while True:        

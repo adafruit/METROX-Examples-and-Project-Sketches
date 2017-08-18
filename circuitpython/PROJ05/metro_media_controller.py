@@ -44,7 +44,7 @@ BUTTON_9 = 0xfd58a7
 key = keyboard.Keyboard()
 # layout = keyboard_layout_us.KeyboardLayoutUS(key)
 
-recvr = IRrecvPCI.IRrecvPCI(board.D10)
+recvr = IRrecvPCI.IRrecvPCI(board.D2)
 recvr.enableIRIn()
 
 dec = IRLib_P01_NECd.IRdecodeNEC()
