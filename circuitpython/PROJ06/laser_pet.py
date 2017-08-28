@@ -13,16 +13,16 @@ import IRLib_P01_NECd
 import time
 from simpleio import Servo
 
-import urandom
+import random
 
 # remote codes
 ENTER = 0xfd906f
 BUTTON_0 = 0xfd30cf
-RIGHT_ARROW = 0xfd50af                                 
+RIGHT_ARROW = 0xfd50af
 LEFT_ARROW = 0xfd10ef
 BUTTON_9 = 0xfd58a7
 
-# the rest of these are not used in this PROJ 
+# the rest of these are not used in this PROJ
 # if you want to create more functions for the laser pet toy, use these
 VOLUME_UP = 0xfd40bf
 VOLUME_DOWN = 0xfd00ff
@@ -61,13 +61,13 @@ def get_signal():
     return dec.value
 
 def rand_angle():
-    servo.set_angle(urandom.randint(0, 180))
+    servo.set_angle(random.randint(0, 180))
 while True:
     print(laser.value)
     if not continuous_laser_mode: laser.value = False
     tmp_signal = get_signal()
     if tmp_signal   == ENTER: continuous_laser_mode = not continuous_laser_mode
-    elif tmp_signal == BUTTON_0: 
+    elif tmp_signal == BUTTON_0:
         laser.value = True
         rand_angle()
     elif tmp_signal == LEFT_ARROW:

@@ -8,7 +8,7 @@ import digitalio
 import pulseio
 import board
 import time
-import urandom
+import random
 from simpleio import map_range
 
 # works: D4
@@ -46,7 +46,7 @@ def setColor(color):
     RGBLED[2].duty_cycle = int(map_range(color[2], 0, 100, 65535, 0))
 
 def randomColor():
-    c = urandom.randrange(len(colors))
+    c = random.randrange(len(colors))
     setColor(colors[c])
 
 setColor(GREEN)
