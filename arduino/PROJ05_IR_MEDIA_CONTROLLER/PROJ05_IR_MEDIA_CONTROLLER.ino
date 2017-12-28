@@ -102,6 +102,7 @@ void loop()
             digitalWrite(LED_BUILTIN, HIGH);
             delay(100);
             Keyboard.releaseAll();
+            break;
           case LEFT_ARROW:
             // key-faster
             // vlc shortcut: -
@@ -109,6 +110,7 @@ void loop()
             digitalWrite(LED_BUILTIN, HIGH);
             delay(100);
             Keyboard.releaseAll();
+            break;
           default:
             // if nothing else matches, do the default
             // default is optional
@@ -120,4 +122,3 @@ void loop()
        myReceiver.enableIRIn();
     }
 }
-
