@@ -3,6 +3,7 @@
 # this circuit was designed for use with the Metro Express Explorers Guide on Learn.Adafruit.com
 
 # by Limor Fried/Ladyada and Asher Lieber for Adafruit Industries
+# modified by microwattbott
 
 # import required libraries
 import digitalio
@@ -27,7 +28,7 @@ for pin in ledpins:
 # turns on one LED after another without a loop
 def oneAfterAnotherNoLoop():
     delayTime = 0.1
-    
+
     ledpins[0].value = True
     time.sleep(delayTime)
     ledpins[1].value = True
@@ -44,7 +45,7 @@ def oneAfterAnotherNoLoop():
     time.sleep(delayTime)
     ledpins[7].value = True
     time.sleep(delayTime)
-    
+
     ledpins[7].value = False
     time.sleep(delayTime)
     ledpins[6].value = False
@@ -76,13 +77,12 @@ def oneAfterAnotherLoop():
 
 def oneOnAtATime():
     delayTime = 0.1
-    for i in range(len(ledpins)):
-        offLED = i - 1
-        if i == 0:
-            offLED = 7
-        ledpins[i].value = True
-        ledpins[offLED].value = False
-        time.sleep(delayTime)
+    ledArrayLength = len(ledpins) # array = num. of LED pins
+    for i in range(10 * ledArrayLength): # loop 10x
+        j = i % ledArrayLength
+        ledpins[j].value = True # turn LED on
+        time.sleep(delayTime) # wait
+        ledpins[j].value = False # turn LED off
 
 def inAndOut():
     delayTime = 0.1
