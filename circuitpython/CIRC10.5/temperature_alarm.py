@@ -14,7 +14,7 @@ piezo = pulseio.PWMOut(board.D8, frequency = 440, duty_cycle = 0, variable_frequ
 temp = analogio.AnalogIn(board.A0)
 
 freezing_temp = 0 
-boiling_temp = 100 
+boiling_temp = 100
 
 while True:
     temperature = map_range(temp.value, 0, 65535, 0, 5)

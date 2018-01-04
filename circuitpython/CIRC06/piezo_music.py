@@ -1,10 +1,14 @@
-# Circuit Python Explorers Guide
-# CIRC06 - Music with Piezo
+"""
+'piezo_music.py'.
 
-import time
+=================================================
+Twinkle Twinkle with a piezo!
+requires:
+- simpleio library
+"""
+
 import board
-import digitalio
-import pulseio
+import time
 from simpleio import tone
 
 # set note

@@ -4,14 +4,15 @@
 
 # by Asher Lieber for Adafruit Industries.
 
-import digitalio
 import board
+import digitalio
 import time
 
+# set up the relay as an output
 relay = digitalio.DigitalInOut(board.D2)
 relay.switch_to_output()
 
 while True:
-    # toggling the relay
+    # toggle the value of the relay
     relay.value = not relay.value
     time.sleep(1)

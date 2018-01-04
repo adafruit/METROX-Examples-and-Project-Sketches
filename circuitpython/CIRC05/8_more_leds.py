@@ -1,12 +1,14 @@
-# Circuit Python Explorers Guide
-# CIRC06 - Music with Piezo
+"""
+'8_more_leds.py'.
 
-# import required libraries
-import digitalio
+=================================================
+LED light show with a 74HC595 shift register
+"""
+
 import board
+import digitalio
 import time
 
-# set up pins and switch them to output
 dataPin = board.D2
 clockPin = board.D3
 latchPin = board.D4
@@ -18,15 +20,12 @@ clock.switch_to_output()
 latch = digitalio.DigitalInOut(latchPin)
 latch.switch_to_output()
 
-# used for single LED manipulation:w
 led_state = 0
-# these are used in the bitwise math that we use to change individual LEDs
-# for more details http://en.wikipedia.org/wiki/Bitwise_operation
 bits = [0b00000001, 0b00000010, 0b00000100, 0b00001000,
         0b00010000, 0b00100000, 0b01000000, 0b10000000]
-
 masks = [0b11111110, 0b11111101, 0b11111011, 0b11110111,
          0b11101111, 0b11011111, 0b10111111, 0b01111111]
+
 
 def updateLEDs(leds):
     latch.value = False
@@ -38,6 +37,7 @@ def updateLEDs(leds):
         clock.value = True
         clock.value = False
     latch.value = True
+
 
 def updateLEDsLong(value):
     latch.value = False
@@ -58,7 +58,7 @@ def updateLEDsLong(value):
         clock.value = False
     latch.value = True
 
-# changes individual LEDs - LEDS are 0-7, states are True or False
+
 def changeLed(led, state):
     global led_state
     led_state = led_state & masks[led]
@@ -66,6 +66,7 @@ def changeLed(led, state):
         led_state = led_state | bits[led]
         # print(led_state)
     updateLEDs(led_state)
+
 
 while True:
     changeLed(3, True)

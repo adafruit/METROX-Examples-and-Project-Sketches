@@ -1,31 +1,28 @@
-# CIRC02 - LED Fun
-# (CircuitPython)
-# this circuit was designed for use with the Metro Express Explorers Guide on Learn.Adafruit.com
+"""
+'8_leds.py'.
 
-# by Limor Fried/Ladyada and Asher Lieber for Adafruit Industries
-# modified by microwattbott
+=================================================
+lights up 8 leds with different animations
+"""
 
-# import required libraries
-import digitalio
-import pulseio
 import board
+import digitalio
 import time
 
 # create a list of DigitalInOut objects using pins 2-9
-ledpins = [ digitalio.DigitalInOut(board.D2),
-            digitalio.DigitalInOut(board.D3),
-            digitalio.DigitalInOut(board.D4),
-            digitalio.DigitalInOut(board.D5),
-            digitalio.DigitalInOut(board.D6),
-            digitalio.DigitalInOut(board.D7),
-            digitalio.DigitalInOut(board.D8),
-            digitalio.DigitalInOut(board.D9) ]
+ledpins = [digitalio.DigitalInOut(board.D2),
+           digitalio.DigitalInOut(board.D3),
+           digitalio.DigitalInOut(board.D4),
+           digitalio.DigitalInOut(board.D5),
+           digitalio.DigitalInOut(board.D6),
+           digitalio.DigitalInOut(board.D7),
+           digitalio.DigitalInOut(board.D8),
+           digitalio.DigitalInOut(board.D9)]
 
-# switch all pins to output
 for pin in ledpins:
     pin.switch_to_output()
 
-# turns on one LED after another without a loop
+
 def oneAfterAnotherNoLoop():
     delayTime = 0.1
 
@@ -63,26 +60,26 @@ def oneAfterAnotherNoLoop():
     ledpins[0].value = False
     time.sleep(delayTime)
 
-# turns on one LED after another with a loop
+
 def oneAfterAnotherLoop():
     delayTime = 0.1
-    # iterates through ledpins list
     for led in ledpins:
         led.value = True
         time.sleep(delayTime)
-    # iterates through ledpins list backwards
     for led in ledpins[::-1]:
         led.value = False
         time.sleep(delayTime)
 
+
 def oneOnAtATime():
     delayTime = 0.1
-    ledArrayLength = len(ledpins) # array = num. of LED pins
-    for i in range(10 * ledArrayLength): # loop 10x
+    ledArrayLength = len(ledpins)
+    for i in range(10 * ledArrayLength):
         j = i % ledArrayLength
-        ledpins[j].value = True # turn LED on
-        time.sleep(delayTime) # wait
-        ledpins[j].value = False # turn LED off
+        ledpins[j].value = True
+        time.sleep(delayTime)
+        ledpins[j].value = False
+
 
 def inAndOut():
     delayTime = 0.1
@@ -114,9 +111,9 @@ def inAndOut():
         ledpins[offLED2].value = False
         time.sleep(delayTime)
 
-# loop forever
+
 while True:
-    #oneAfterAnotherNoLoop()
-    #oneAfterAnotherLoop()
-    #oneOnAtATime()
+    # oneAfterAnotherNoLoop()
+    # oneAfterAnotherLoop()
+    # oneOnAtATime()
     inAndOut()
