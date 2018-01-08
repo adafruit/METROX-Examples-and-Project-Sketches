@@ -1,10 +1,13 @@
-# Circuit Python Explorers Guide
-# CIRC06 - Music with Piezo
+"""
+'piezo_music.py'.
 
+=================================================
+Twinkle Twinkle with a piezo!
+requires:
+- simpleio library
+"""
 import time
 import board
-import digitalio
-import pulseio
 from simpleio import tone
 
 # set note
@@ -24,7 +27,7 @@ tones = {'c': 263,
 tempo = 300
 
 # play the notes!
-for i in range(len(notes)):
+for i, item in enumerate(notes):
     tempodelay = 60 / tempo
     note = notes[i]
     beat = beats[i]

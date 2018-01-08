@@ -1,20 +1,23 @@
-# CIRC10 - Temperature Alarm
-# (Circuit Python)
-# this circuit was designed for use with the Metro Express Explorers Guide on Learn.Adafruit.com
+"""
+'temperature_alarm.py'.
 
-# by Asher Lieber for Adafruit Industries.
+=================================================
+sounds an alarm when the temperature crosses a threshold
+requires:
+- simpleio
+"""
 
+import time
 import analogio
 import pulseio
 import board
-import time
 from simpleio import map_range
 
-piezo = pulseio.PWMOut(board.D8, frequency = 440, duty_cycle = 0, variable_frequency = True)
+piezo = pulseio.PWMOut(board.D8, frequency=440, duty_cycle=0, variable_frequency=True)
 temp = analogio.AnalogIn(board.A0)
 
-freezing_temp = 0 
-boiling_temp = 100 
+freezing_temp = 0
+boiling_temp = 100
 
 while True:
     temperature = map_range(temp.value, 0, 65535, 0, 5)

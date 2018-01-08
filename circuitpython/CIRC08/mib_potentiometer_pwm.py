@@ -1,14 +1,13 @@
-# CIRC08 - Twisting make it better pwm 
-# (CircuitPython)
-# this circuit was designed for use with the Metro Express Explorers Guide on Learn.Adafruit.com
+"""
+'mib_potentiometer_pwm.py'.
 
-# by Limor Fried/Ladyada for Adafruit Industries.
+=================================================
+fades a LED using a potentiometer
+"""
 
-import digitalio
 import analogio
 import board
 import pulseio
-import time
 
 led = pulseio.PWMOut(board.D9)
 pot = analogio.AnalogIn(board.A0)

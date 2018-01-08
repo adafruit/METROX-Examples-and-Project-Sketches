@@ -1,22 +1,22 @@
-# CIRC04 - A Single Servo
-# (Circuit Python) 
-# this circuit was designed for use with the Metro Express Explorers Guide on Learn.Adafruit.com 
+"""
+'servo.py'.
 
-# by Limor Fried/Ladyada for Adafruit Industries.
+=================================================
+controls a servo using simpleio's servo method
+requires:
+- simpleio library
+"""
 
-# import required libraries
-import digitalio
-import pulseio
-import board
 import time
-from simpleio import Servo
+import simpleio
+import board
 
-servo = Servo(board.D9)
+myServo = simpleio.Servo(board.D9)
 
 while True:
-    servo.set_angle(0)
-    time.sleep(1)
-    servo.set_angle(90)
-    time.sleep(1)
-    servo.set_angle(180)
-    time.sleep(1)
+    myServo.angle = 0
+    print("Angle: ", myServo.angle)
+    time.sleep(2)
+    myServo.angle = myServo.microseconds_to_angle(2500)
+    print("Angle: ", myServo.angle)
+    time.sleep(2)
