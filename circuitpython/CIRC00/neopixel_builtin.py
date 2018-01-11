@@ -10,19 +10,19 @@ import board
 import neopixel
 
 # we only have one neopixel on our metro express
-neo = neopixel.NeoPixel(board.NEOPIXEL, 1)
+NEO = neopixel.NeoPixel(board.NEOPIXEL, 1)
+NEO.brightness = 0.5
 
 # primary colors
-red = (255, 0, 0)
-green = (0, 255, 0)
-blue = (0, 0, 255)
+RED = (255, 0, 0)
+GREEN = (0, 255, 0)
+BLUE = (0, 0, 255)
 
-colors = [red, green, blue]
+COLORS = [RED, GREEN, BLUE]
 
-# write red, green, blue into an array
-for i in colors:
-    neo[0] = i
-    neo.write()
+for i in COLORS:
+    NEO[0] = i
+    NEO.show()
     time.sleep(.3)
 
 # shows all colors by trying all combinations of RGB levels
@@ -31,9 +31,9 @@ for red_level in range(0, 256, 100):
         for blue_level in range(0, 256, 100):
             print("red: ", red_level, "green: ",
                   green_level, "blue: ", blue_level)
-            neo[0] = (red_level, green_level, blue_level)
-            neo.write()
+            NEO[0] = (red_level, green_level, blue_level)
+            NEO.show()
             # wait 0.2 seconds to give us time to see the colors
             time.sleep(1)
-neo[0] = (0, 0, 0)
-neo.write()
+NEO[0] = (0, 0, 0)
+NEO.show()

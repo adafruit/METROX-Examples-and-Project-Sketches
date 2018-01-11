@@ -2,21 +2,19 @@
 'servo.py'.
 
 =================================================
-controls a servo using simpleio's servo method
+move a hobby servo (towerpro sg92r) w/ 3-wire interface
 requires:
-- simpleio library
+- Adafruit_CircuitPython_Motor
 """
-
 import time
-import simpleio
 import board
+import pulseio
+from adafruit_motor import servo
 
-myServo = simpleio.Servo(board.D9)
+SERVO = servo.Servo(pulseio.PWMOut(board.D9))
 
 while True:
-    myServo.angle = 0
-    print("Angle: ", myServo.angle)
+    SERVO.angle = 0
     time.sleep(2)
-    myServo.angle = myServo.microseconds_to_angle(2500)
-    print("Angle: ", myServo.angle)
+    SERVO.angle = 90
     time.sleep(2)

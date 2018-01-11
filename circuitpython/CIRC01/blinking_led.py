@@ -1,8 +1,8 @@
 """
-'blinking_led.py'.
+'blinking_LED.py'.
 
 =================================================
-blinks a led using digitalio
+blinks a LED using digitalio
 """
 
 import time
@@ -10,16 +10,16 @@ import digitalio
 import board
 
 # create a DigitalInOut object
-led = digitalio.DigitalInOut(board.D13)
+LED = digitalio.DigitalInOut(board.D13)
 # LED pin should be used as an output
-led.switch_to_output()
+LED.switch_to_output()
 
 while True:
     # turn LED ON
-    led.value = True
+    LED.value = True
     # wait 1 second
     time.sleep(1.0)
     # turn LED off
-    led.value = False
+    LED.value = False
     # wait 1 second
     time.sleep(1.0)

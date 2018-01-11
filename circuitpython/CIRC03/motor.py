@@ -1,27 +1,30 @@
 """
-'motor.py'.
+'MOTOR.py'.
 
 =================================================
-spin a DC motor using digitalio
+spin a DC MOTOR using digitalio
+requires
+- Adafruit_CircuitPython_Motor
 """
 
+import time
 import board
 import digitalio
-import time
 
-motorPin = board.D9
-motor = digitalio.DigitalInOut(motorPin)
-motor.switch_to_output()
+MOTOR_PIN = board.D9
+MOTOR = digitalio.DigitalInOut(MOTOR_PIN)
+MOTOR.switch_to_output()
 
 
-def motorOnThenOff():
-    onTime = 2.5
-    offTime = 1.0
-    motor.value = True
-    time.sleep(onTime)
-    motor.value = False
-    time.sleep(offTime)
+def motor_on_then_off():
+    """toggles the motor."""
+    on_time = 2.5
+    off_time = 1.0
+    MOTOR.value = True
+    time.sleep(on_time)
+    MOTOR.value = False
+    time.sleep(off_time)
 
 
 while True:
-    motorOnThenOff()
+    motor_on_then_off()

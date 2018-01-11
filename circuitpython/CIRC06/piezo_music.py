@@ -10,12 +10,9 @@ import time
 import board
 from simpleio import tone
 
-# set note
-notes = 'ccdcfeccdcgf '
-# set beats
-beats = [1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 2, 4]
-# set tones
-tones = {'c': 263,
+NOTES = 'ccdcfeccdcgf '
+BEATS = [1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 2, 4]
+TONES = {'c': 263,
          'd': 293,
          'e': 329,
          'f': 349,
@@ -23,17 +20,16 @@ tones = {'c': 263,
          'a': 440,
          'b': 493,
          'C': 523}
-# set bpm
-tempo = 300
+TEMPO = 300
 
 # play the notes!
-for i, item in enumerate(notes):
-    tempodelay = 60 / tempo
-    note = notes[i]
-    beat = beats[i]
+for i, item in enumerate(NOTES):
+    tempodelay = 60 / TEMPO
+    note = NOTES[i]
+    beat = BEATS[i]
     print(note, end='')
     if note == ' ':
         time.sleep(beat * tempodelay)
     else:
-        tone(board.D9, tones[note], beat*tempodelay)
+        tone(board.D9, TONES[note], beat*tempodelay)
     time.sleep(tempodelay/2)

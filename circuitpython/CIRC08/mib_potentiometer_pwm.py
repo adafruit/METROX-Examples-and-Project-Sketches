@@ -9,8 +9,8 @@ import analogio
 import board
 import pulseio
 
-led = pulseio.PWMOut(board.D9)
-pot = analogio.AnalogIn(board.A0)
+LED = pulseio.PWMOut(board.D9)
+POT = analogio.AnalogIn(board.A0)
 
 while True:
-    led.duty_cycle = pot.value
+    LED.duty_cycle = POT.value

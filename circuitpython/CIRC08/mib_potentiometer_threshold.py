@@ -1,5 +1,5 @@
 """
-'mib_potentiometer_threshold.py'.
+'mib_potentiometer_THRESHOLD.py'.
 
 =================================================
 turns on a LED when the potentiometer is above a half-turn
@@ -8,14 +8,14 @@ import analogio
 import board
 import digitalio
 
-led = digitalio.DigitalInOut(board.D13)
-led.switch_to_output()
-pot = analogio.AnalogIn(board.A0)
+LED = digitalio.DigitalInOut(board.D13)
+LED.switch_to_output()
+POT = analogio.AnalogIn(board.A0)
 
-threshold = 10000
+THRESHOLD = 10000
 
 while True:
-    if pot.value > threshold:
-        led.value = True
+    if POT.value > THRESHOLD:
+        LED.value = True
     else:
-        led.value = False
+        LED.value = False

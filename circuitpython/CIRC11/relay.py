@@ -9,9 +9,9 @@ import time
 import board
 import digitalio
 
-relay = digitalio.DigitalInOut(board.D2)
-relay.switch_to_output()
+RELAY = digitalio.DigitalInOut(board.D2)
+RELAY.switch_to_output()
 
 while True:
-    relay.value = not relay.value
+    RELAY.value = not RELAY.value
     time.sleep(1)

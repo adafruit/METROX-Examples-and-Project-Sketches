@@ -9,8 +9,8 @@ import analogio
 import board
 import pulseio
 
-squeeze = analogio.AnalogIn(board.A2)
-led = pulseio.PWMOut(board.D10)
+FORCE_SENS_RESISTOR = analogio.AnalogIn(board.A2)
+LED = pulseio.PWMOut(board.D10)
 
 while True:
-    led.duty_cycle = squeeze.value
+    LED.duty_cycle = FORCE_SENS_RESISTOR.value
