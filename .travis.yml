@@ -8,15 +8,12 @@ branches:
 
 env:
   global:
-#     - PRETTYNAME="Adafruit FT6206 Arduino Library"
-# Optional, will default to "$TRAVIS_BUILD_DIR/Doxyfile"
-#    - DOXYFILE: $TRAVIS_BUILD_DIR/Doxyfile
 
 before_install:
    - source <(curl -SLs https://raw.githubusercontent.com/adafruit/travis-ci-arduino/master/install.sh)
 
-#install:
-#   - arduino --install-library "Adafruit Neopixel"
+install:
+   - arduino --install-library "Adafruit NeoPixel"
 
 script:
    - build_main_platforms
