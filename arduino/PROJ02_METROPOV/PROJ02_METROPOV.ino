@@ -1,7 +1,7 @@
 /*
  * (PROJ03) Metro (and Metro Express) Persistence of Vision Display
- * Desc: POV display for Metro & Metro Express using 7x LEDs and 7x 560ohm Resistors 
- * 
+ * Desc: POV display for Metro & Metro Express using 7x LEDs and 7x 560ohm Resistors
+ *
  * by Brent Rubell for Adafruit Industries. Support Open Source, buy Adafruit!
 */
 
@@ -333,7 +333,7 @@ void loop() {
   printLetter(O);
   printLetter(spacer);
   // delay 2s
-  delay(2S);
+  delay(2);
 
 }
 
@@ -344,7 +344,7 @@ void printLetter(int letter[8][5]) {
   {
       Serial.print("\nRow # ");
       Serial.print(j);
-      Serial.println("."); 
+      Serial.println(".");
     //  column of letter array
     for (int i = 0; i < 8; i++) {
       // check for 1 within column6

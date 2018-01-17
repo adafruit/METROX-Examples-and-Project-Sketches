@@ -1,3 +1,5 @@
+// CIRC12 - RGB LED 
+
 //  RGB LED PINS
 // three pins:
 // 9 = RED
@@ -5,25 +7,25 @@
 // 11 = BLUE
 int ledDigitalOne[] = {9, 10, 11};
 
-// define on as low 
+// define on as low
 // (because you use a common anode RGB LED)
 const boolean ON = LOW;
 // define off as high
 const boolean OFF = HIGH;
 
-//  Predefined Colors 
-const boolean RED[] = {ON, OFF, OFF}; 
+//  Predefined Colors
+const boolean RED[] = {ON, OFF, OFF};
 const boolean GREEN[] = {OFF, ON, OFF};
-const boolean BLUE[] = {OFF, OFF, ON}; 
-const boolean YELLOW[] = {ON, ON, OFF}; 
-const boolean CYAN[] = {OFF, ON, ON}; 
-const boolean MAGENTA[] = {ON, OFF, ON}; 
-const boolean WHITE[] = {ON, ON, ON}; 
+const boolean BLUE[] = {OFF, OFF, ON};
+const boolean YELLOW[] = {ON, ON, OFF};
+const boolean CYAN[] = {OFF, ON, ON};
+const boolean MAGENTA[] = {ON, OFF, ON};
+const boolean WHITE[] = {ON, ON, ON};
 const boolean BLACK[] = {OFF, OFF, OFF};
 
 //An Array that stores the predefined colors
-const boolean* COLORS[] = 
-  {RED, GREEN, BLUE,YELLOW, CYAN, MAGENTA, 
+const boolean* COLORS[] =
+  {RED, GREEN, BLUE,YELLOW, CYAN, MAGENTA,
   WHITE, BLACK};
 
 void setup() {
