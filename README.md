@@ -1,32 +1,6 @@
-# Examples and Projects
+# METROX - Arduino 
 
-### for the Metro Explorers Guide
-
-
-This repository contains code for the following Metro Explorer Guides on the Adafruit Learning System:
-
- * [Metro Explorer Guide for Arduino](https://learn.adafruit.com/experimenters-guide-for-metro/intro)
- * [Metro Explorer Guide for CircuitPython](https://learn.adafruit.com/experimenters-guide-for-metro-express)
- * [Metro Explorer Guide for MakeCode](https://learn.adafruit.com/metro-express-experimenters-guide-with-makecode/)
-
-
-The following directories correspond to their respective guides:
-
-* /circuitpython/ -
-* /arduino/
-* /makecode/
-
-
-## Compatibility
-<!-- START METRO COMPATABILITY TABLE -->
-
-| Metro Version      	| Arduino 	| CircuitPython  	| MakeCode       	|
-|--------------------	|---------	|----------------	|----------------	|
-| Metro Classic 328p 	| X       	| Not Compatible 	| Not Compatible 	|
-| Metro M0 Express   	| X       	| X              	| X              	|
-
-<!-- END METRO COMPATABILITY TABLE -->
-
+Code for the code for the circuits and projects on the [Metro Explorer Guide for Arduino](https://learn.adafruit.com/experimenters-guide-for-metro/intro)
 
 
 ## Contributing to this repository:
