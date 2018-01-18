@@ -1,5 +1,7 @@
 # METROX - Arduino 
 
+[![Build Status](https://travis-ci.org/adafruit/METROX-Examples-and-Project-Sketches.svg?branch=master)](https://travis-ci.org/adafruit/METROX-Examples-and-Project-Sketches)
+
 Code for the code for the circuits and projects on the [Metro Explorer Guide for Arduino](https://learn.adafruit.com/experimenters-guide-for-metro/intro)
 
 
