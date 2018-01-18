@@ -1,36 +1,48 @@
-# CIRC16 - IR Sensor
-# (CircuitPython)
-# this circuit was designed for use with the Metro Express Explorers Guide on Learn.Adafruit.com
+"""
+'ir_sensor.py'.
 
-# by Asher Lieber for Adafruit Industries
+=================================================
+control a LED with an IR Remote
+requires:
+- adafruit_irremote library
+"""
 
+import adafruit_irremote
 import board
 import digitalio
-import IRrecvPCI
-import IRLib_P01_NECd
+import pulseio
 
-# NEC button 1
-button_1 = 16582903
-
+# set up LED
 led = digitalio.DigitalInOut(board.D11)
 led.switch_to_output()
 
-recvr = IRrecvPCI.IRrecvPCI(board.D6)
-recvr.enableIRIn()
-
-dec = IRLib_P01_NECd.IRdecodeNEC()
-
-def get_signal():
-    # wait until results are available
-    while not recvr.getResults():
-        pass
-    recvr.enableIRIn()
-    dec.decode()
-    return dec.value
+pulsein = pulseio.PulseIn(board.D6, maxlen=120, idle_state=True)
+decoder = adafruit_irremote.GenericDecode()
+# size must match what you are decoding! for NEC use 4
+received_code = bytearray(4)
+last_code = None
 
 while True:
-    if get_signal() == button_1:
-        print('but 1 pressed')
+    try:
+        pulses = decoder.read_pulses(pulsein)
+    except MemoryError as e:
+        print("Memory Error Occured: ", e)
+        continue
+
+    try:
+        code = decoder.decode_bits(pulses, debug=False)
+    except adafruit_irremote.IRNECRepeatException:
+        print("NEC Code Repeated, doing last command")
+        code = last_code
+    except adafruit_irremote.IRDecodeException as e:
+        print("Failed to decode: ", e)
+    except MemoryError as e:
+        print("Memory Error Occured: ", e)
+
+    print(code[2])
+    if code[2] == 247:
         led.value = True
     else:
         led.value = False
+
+    last_code = code

@@ -1,26 +1,28 @@
-# CIRC10 - Temperature
-# (Circuit Python)
-# this circuit was designed for use with the Metro Express Explorers Guide on Learn.Adafruit.com
+"""
+'temperature.py'.
 
-# by Limor Fried/Ladyada and Asher Lieber for Adafruit Industries.
+=================================================
+Writes TMP36 data to the REPL
+"""
 
-import board
-import analogio
 import time
+import analogio
+import board
 from simpleio import map_range
 
-sensor = analogio.AnalogIn(board.A0)
+TEMP_SENSOR = analogio.AnalogIn(board.A0)
 
-def getVoltage(p_sensor):
-    # map value from photo sensor to voltage
-    v = map_range(p_sensor.value, 0, 65535, 0, 3.3)
-    return v
 
-# loop forever
+def get_voltage(_temp_sensor):
+    """gets the TMP36's voltage."""
+    voltage_val = map_range(_temp_sensor.value, 0, 65535, 0, 3.3)
+    return voltage_val
+
+
 while True:
-    temp = getVoltage(sensor)
-    print("Voltage =", temp, end="")
+    TMP = get_voltage(TEMP_SENSOR)
+    print("Voltage =", TMP, end="")
     # convert to celsius
-    temp = (temp - 0.5) * 100
-    print("   Temperature =", temp)
-    time.sleep(0.1)
+    TMP = (TMP - 0.5) * 100
+    print("   Temperature =", TMP)
+    time.sleep(1)

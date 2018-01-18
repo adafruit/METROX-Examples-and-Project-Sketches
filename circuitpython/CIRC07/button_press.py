@@ -1,23 +1,18 @@
-# CIRC18 - Adding USB Control
-# this circuit was designed for use with the Metro Express Explorers Guide on Learn.Adafruit.com
+"""
+'BUTTON_press.py'.
 
-# by Asher Lieber for Adafruit Industries
-
-from adafruit_hid import mouse
-import analogio
+=================================================
+push the BUTTON and light up a LED
+"""
 import digitalio
 import board
-import time
-from simpleio import map_range
 
-button = digitalio.DigitalInOut(board.D2)
-pot = analogio.AnalogIn(board.A0)
+LED = digitalio.DigitalInOut(board.D13)
+LED.switch_to_output()
+BUTTON = digitalio.DigitalInOut(board.D2)
+BUTTON.switch_to_input()
 
-m = mouse.Mouse()
 
 while True:
-    if not button.value: # move while button is pressed
-    # if button.value: # stop moving when button is pressed
-        #maps potentiometer value to mouse scroll value
-        m.move(0, 0, int(map_range(pot.value, 50, 65520, -5, 5)))
-        time.sleep(.08)
+    BTN_VAL = BUTTON.value
+    LED.value = not BTN_VAL

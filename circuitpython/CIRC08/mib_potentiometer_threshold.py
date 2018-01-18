@@ -1,21 +1,21 @@
-# CIRC08 - Twisting make it better pwm 
-# (CircuitPython)
-# this circuit was designed for use with the Metro Express Explorers Guide on Learn.Adafruit.com
+"""
+'mib_potentiometer_THRESHOLD.py'.
 
-# by Limor Fried/Ladyada for Adafruit Industries.
-
+=================================================
+turns on a LED when the potentiometer is above a half-turn
+"""
+import analogio
 import board
 import digitalio
-import analogio
 
-led = digitalio.DigitalInOut(board.D13)
-led.switch_to_output()
-pot = analogio.AnalogIn(board.A0)
+LED = digitalio.DigitalInOut(board.D13)
+LED.switch_to_output()
+POT = analogio.AnalogIn(board.A0)
 
-threshold = 10000
+THRESHOLD = 10000
 
 while True:
-    if pot.value > threshold:
-        led.value = True
+    if POT.value > THRESHOLD:
+        LED.value = True
     else:
-        led.value = False
+        LED.value = False

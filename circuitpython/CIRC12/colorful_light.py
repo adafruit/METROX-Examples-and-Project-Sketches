@@ -1,45 +1,38 @@
-# CIRC12 - Colorful Light
-# (CircuitPython)
-# this circuit was designed for use with the Metro Express Explorers Guide on Learn.Adafruit.com
+"""
+'colorful_light.py'.
 
-# by Limor Fried/Ladyada for Adafruit Industries
+=================================================
+RGB LED control with circuitpython
+"""
 
-import digitalio
-import pulseio
 import board
-import time
+import digitalio
 
-redLED = digitalio.DigitalInOut(board.D9)
-greenLED = digitalio.DigitalInOut(board.D10)
-blueLED = digitalio.DigitalInOut(board.D11)
+RED_LED = digitalio.DigitalInOut(board.D9)
+GREEN_LED = digitalio.DigitalInOut(board.D10)
+BLUE_LED = digitalio.DigitalInOut(board.D11)
 
-RGBLED = [redLED, greenLED, blueLED]
-# only red
-RED     = [True, False, False]
-# only green
-GREEN   = [False, True, False]
-# only blue
-BLUE    = [False, False, True]
-# red+green
-YELLOW  = [True, True, False]
-# green+blue
-CYAN    = [False, True, True]
-# red+blue
+RGBLED = [RED_LED, GREEN_LED, BLUE_LED]
+RED = [True, False, False]
+GREEN = [False, True, False]
+BLUE = [False, False, True]
+YELLOW = [True, True, False]
+CYAN = [False, True, True]
 MAGENTA = [True, False, True]
-# all on
-WHITE   = [True, True, True]
-# all off
-BLACK   = [False, False, False]
+WHITE = [True, True, True]
+BLACK = [False, False, False]
+COLOR_ARRAY = [RED, GREEN, BLUE, YELLOW, CYAN, MAGENTA, WHITE, BLACK]
 
-colors = [RED, GREEN, BLUE, YELLOW, CYAN, MAGENTA, WHITE, BLACK]
-
-# switch to output
 for led in RGBLED:
     led.switch_to_output()
 
-def setColor(color):
+
+def set_color(color):
+    """sets the rgb led's cathode value."""
     RGBLED[0].value = not color[0]
     RGBLED[1].value = not color[1]
     RGBLED[2].value = not color[2]
 
-setColor(GREEN)
+
+while True:
+    set_color(GREEN)

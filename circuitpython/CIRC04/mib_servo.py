@@ -1,37 +1,39 @@
-# CIRC04 - A Single Servo make it better
-# (Circuit Python)                                                                                             
-# this circuit was designed for use with the Metro Express Explorers Guide on Learn.Adafruit.com               
-                                                                                                               
-# by Limor Fried/Ladyada for Adafruit Industries.                                                              
+"""
+'mib_servo.py'.
 
-# import required libraries
-import analogio    
-import pulseio
-import board
+=================================================
+sweeping a servo with an analog potentiometer
+requires:
+- Adafruit_CircuitPython_Motor
+"""
 import time
-from simpleio import Servo
+import analogio
+import board
+import pulseio
+from adafruit_motor import servo
 
-servo = Servo(board.D9)
 
-potPin = board.A0
-pot = analogio.AnalogIn(potPin)
+SERVO = servo.Servo(pulseio.PWMOut(board.D9))
+POTE = analogio.AnalogIn(board.A0)
 
-def servoSweep():
-    # iterate from 0-180, setting the servo angle to each number
-    for a in range(0,180,1):
-        servo.set_angle(a)
+
+def servo_sweep():
+    """sweeps the servo."""
+    for angle_fwd in range(0, 180, 1):
+        SERVO.angle = angle_fwd
         time.sleep(0.01)
-    # iterate from 180-0
-    for a in range(180,0,-1):
-        servo.set_angle(a)
+    for angle_bkwd in range(180, 0, -1):
+        SERVO.angle = angle_bkwd
         time.sleep(0.01)
 
-def potSweep():
-    val = pot.value / 65536
-    print("Pot =", val)
-    servo.set_angle(180 * val)
+
+def pote_sweep():
+    """assigns servo value to an analog potentiometer value."""
+    val = POTE.value / 65536
+    SERVO.angle = 180 * val
     time.sleep(0.05)
 
+
 while True:
-    # servoSweep()
-    potSweep()
+    servo_sweep()
+    # pote_sweep()

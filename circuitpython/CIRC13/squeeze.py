@@ -1,17 +1,16 @@
-# CIRC13 - Squeezing
-# (CircuitPython)
-# this circuit was designed for use with the Metro Express Explorers Guide on Learn.Adafruit.com
+"""
+'squeeze.py'.
 
-# by Asher Lieber for Adafruit Industries
+=================================================
+force sensitive resistor (fsr) with circuitpython
+"""
 
-import board
-import pulseio 
 import analogio
+import board
+import pulseio
 
-squeeze = analogio.AnalogIn(board.A2)
-led = pulseio.PWMOut(board.D10)
+FORCE_SENS_RESISTOR = analogio.AnalogIn(board.A2)
+LED = pulseio.PWMOut(board.D10)
 
-# loop forever
 while True:
-    # set brightness of LED to value of FSR
-    led.duty_cycle = squeeze.value
+    LED.duty_cycle = FORCE_SENS_RESISTOR.value

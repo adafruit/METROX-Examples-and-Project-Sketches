@@ -1,28 +1,30 @@
-# CIRC07 - Button Pressing make it better pwm
-# (CircuitPython)                                                                                  
-# this circuit was designed for use with the Metro Express Explorers Guide on Learn.Adafruit.com    
-                                                                                                    
-# by Limor Fried/Ladyada for Adafruit Industries.                                                   
+"""
+'mib_button_press_pwm.py'.
 
+=================================================
+fade a LED in and out using two buttons
+"""
+import time
 import digitalio
 import board
 import pulseio
-import time        
-                   
-led = pulseio.PWMOut(board.D9)   
-button1 = digitalio.DigitalInOut(board.D2)                 
-button1.switch_to_input()
-button2 = digitalio.DigitalInOut(board.D3)                 
-button1.switch_to_input()
-                   
-while True:        
-    brightness = led.duty_cycle            
-    if not button1.value:
-        brightness += 100                  
-    if not button2.value:
-        brightness -= 100                  
-    print(brightness)                      
-    brightness = max(0, brightness)        
-    brightness = min(44000, brightness)    
-    led.duty_cycle = brightness            
+
+
+LED = pulseio.PWMOut(board.D13)
+BUTTON1 = digitalio.DigitalInOut(board.D3)
+BUTTON1.switch_to_input()
+BUTTON2 = digitalio.DigitalInOut(board.D2)
+BUTTON2.switch_to_input()
+
+
+while True:
+    BRIGHTNESS = LED.duty_cycle
+    # If button
+    if not BUTTON1.value:
+        BRIGHTNESS += 100
+    if not BUTTON2.value:
+        BRIGHTNESS -= 100
+    BRIGHTNESS = max(0, BRIGHTNESS)
+    BRIGHTNESS = min(44000, BRIGHTNESS)
+    LED.duty_cycle = BRIGHTNESS
     time.sleep(0.001)

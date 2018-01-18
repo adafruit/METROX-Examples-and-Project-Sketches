@@ -1,17 +1,17 @@
-# CIRC11 - Large Loads With Relays
-# (CircuitPython)
-# this circuit was designed for use with the Metro Express Explorers Guide on Learn.Adafruit.com
+"""
+'relay.py'.
 
-# by Asher Lieber for Adafruit Industries.
+=================================================
+drives a small relay
+"""
 
-import digitalio
-import board
 import time
+import board
+import digitalio
 
-relay = digitalio.DigitalInOut(board.D2)
-relay.switch_to_output()
+RELAY = digitalio.DigitalInOut(board.D2)
+RELAY.switch_to_output()
 
 while True:
-    # toggling the relay
-    relay.value = not relay.value
+    RELAY.value = not RELAY.value
     time.sleep(1)

@@ -1,23 +1,23 @@
-# CIRC09 - Light make it better night_light
-# (CircuitPython)
-# this circuit was designed for use with the Metro Express Explorers Guide on Learn.Adafruit.com
+"""
+'mib_photo_sensor_night_light.py'.
 
-# by Asher Lieber for Adafruit Industries.
+=================================================
+turns off and on a LED using a photo sensor
+"""
 
 import analogio
-import digitalio
 import board
-import time
+import digitalio
 
-threshold = 60000
+THRESHOLD = 60000
 
-led = digitalio.DigitalInOut(board.D9)
-led.switch_to_output()
-light = analogio.AnalogIn(board.A0)
+LED = digitalio.DigitalInOut(board.D9)
+LED.switch_to_output()
+LIGHT = analogio.AnalogIn(board.A0)
 
 
 while True:
-    if light.value > threshold:
-        led.value = True
+    if LIGHT.value > THRESHOLD:
+        LED.value = True
     else:
-        led.value = False
+        LED.value = False
