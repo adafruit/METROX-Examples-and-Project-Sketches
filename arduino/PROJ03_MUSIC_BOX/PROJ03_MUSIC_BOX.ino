@@ -1,11 +1,4 @@
-/*
-* (PROJ03) Metro (and Metro Express!) Music Box
-* Desc: 21st century music box: Plays a melody when the box is open.
-* Circuit: Piezo, 16x2 LCD, Photo Light Sensor
-* 
-* by Brent Rubell for Adafruit Industries.   Support Open Source Hardware, buy Adafruit!
-* 
-*/
+// PROJ03 - Music Box
 
 // include the lcd library code
 #include <LiquidCrystal.h>
@@ -39,7 +32,7 @@ void playTone(int tone, int duration) {
 void playNote(char note, int duration) {
   char names[] = { 'c', 'd', 'e', 'f', 'g', 'a', 'b', 'C' };
   int tones[] = { 1915, 1700, 1519, 1432, 1275, 1136, 1014, 956 };
-  
+
   // play the tone corresponding to the note name
   for (int i = 0; i < 8; i++) {
     if (names[i] == note) {
@@ -96,6 +89,6 @@ void loop() {
     digitalWrite(backlightPin, LOW);
     lcd.clear();
     lcd.print("box closed...");
-    Serial.println("Box closed, don't play music.");  
+    Serial.println("Box closed, don't play music.");
   }
 }

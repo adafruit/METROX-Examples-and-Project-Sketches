@@ -1,34 +1,29 @@
-/*
- * CIRC10: Temperature 
- * for use with both the Metro and Metro Express
- * 
- * by Brent Rubell for Adafruit Industries.    Support Open Source, buy Adafruit!
- */
- 
+// CIRC10 - Temperature
+
 #define ANALOGREFVOLTAGE 5.555
- 
-//TMP36 Pin 
+
+//TMP36 Pin
 int temperaturePin = A0;
- 
+
 void setup() {
   // Start the Serial connection
-  Serial.begin(9600);  
+  Serial.begin(9600);
 }
- 
+
 void loop() {
  float temperature = 0;
- 
+
  temperature = getVoltage(temperaturePin);
  Serial.println(temperature);
-    
+
  // Convert to degrees C
- temperature = (temperature - .5) * 100;    
+ temperature = (temperature - .5) * 100;
  Serial.println(temperature);
-                                                            
- delay(1000);                                     
+
+ delay(1000);
 }
- 
-float getVoltage(int pin) { 
-  
-  return(float(analogRead(pin))* float(ANALOGREFVOLTAGE/1023.000));  
+
+float getVoltage(int pin) {
+
+  return(float(analogRead(pin))* float(ANALOGREFVOLTAGE/1023.000));
 }

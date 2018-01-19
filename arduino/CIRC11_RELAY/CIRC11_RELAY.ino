@@ -1,4 +1,4 @@
-// CIRC11 - Relay 
+// CIRC11 - Larger Loads with Relays 
 
 int relayPin = 2;
 

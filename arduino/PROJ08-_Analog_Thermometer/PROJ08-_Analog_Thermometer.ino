@@ -1,14 +1,10 @@
-/*
- * PROJ08: Analog Temperature Gauge
- * for the MetroX Classic and Express Guide
- * 
- * by Brent Rubell and Asher Lieber for Adafruit Industries.    Support Open Source, buy Adafruit!
- */
+// PROJ08 - Analog Thermometer
+
 #include <Servo.h>
 
 #define ANALOGREFVOLTAGE 5.555
- 
-// TMP36 Pin 
+
+// TMP36 Pin
 const int temperaturePin = A0;
 
 // create servo object to control the analog gauge
@@ -31,7 +27,7 @@ void loop() {
   // read the voltage from the pin
   float voltage = getVoltage(temperaturePin);
 
-  
+
   // convert the voltage to a temperature value
   float temperature = convertToF(voltage);
 
@@ -51,8 +47,8 @@ void loop() {
 }
 
 // gets the voltage from the analog pin
-float getVoltage(int pin) { 
-  return(float(analogRead(pin))* float(ANALOGREFVOLTAGE/1023.000));  
+float getVoltage(int pin) {
+  return(float(analogRead(pin))* float(ANALOGREFVOLTAGE/1023.000));
 }
 
 // convert C to F

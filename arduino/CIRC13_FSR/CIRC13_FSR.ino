@@ -1,8 +1,5 @@
-/*
- * Force Sensitive Resistor Test Code
- *
- * The intensity of the LED will vary with the amount of pressure on the sensor
- */
+// CIRC13 - Squeezing
+
 int sensePin = 2; // the pin the FSR is attached to
 int ledPin = 9; // the pin the LED is attached to (use one capable of PWM)
 void setup() {

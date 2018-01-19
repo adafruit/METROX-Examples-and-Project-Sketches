@@ -1,8 +1,4 @@
-/*
- * CIRC15: Digital Thermometer
- * Experimenter's Guide for Metro (and Metro Express!)
- *  by Brent Rubell for Adafruit Industries ~ Support Open Source, buy adafruit!
- */
+// CIRC15 - Thermometer
 
 // If you're using a METRO EXPRESS, change this value to 3.333
 #define ANALOGREFVOLTAGE 5.000
@@ -13,7 +9,7 @@
 // initialize the library with the numbers of the interface pins
 LiquidCrystal lcd(7, 8, 9, 10, 11, 12);
 
-// TMP36 Pin 
+// TMP36 Pin
 int temperaturePin = 0;
 
 void setup() {
@@ -23,17 +19,17 @@ void setup() {
 }
 
 void loop() {
-  
+
   float temperature = 0;
   temperature = getVoltage(temperaturePin);
-  
+
   /* Output: Degrees C */
-  temperature = (temperature - .5) * 100; 
+  temperature = (temperature - .5) * 100;
   /* Output: Degrees F */
   // temperature = (((temperature - .5) * 100)*1.8) + 32;
   /* Output: Voltage */
   // temperature = (temperature - .5) * 100; d
-  
+
   // Write temperature to the LCD
   lcd.print("Temp: ");
   lcd.setCursor(6,0);
@@ -46,6 +42,6 @@ void loop() {
   lcd.clear();
 }
 
-float getVoltage(int pin) { 
-  return(float(analogRead(pin))* float(ANALOGREFVOLTAGE/1023.000));  
+float getVoltage(int pin) {
+  return(float(analogRead(pin))* float(ANALOGREFVOLTAGE/1023.000));
 }

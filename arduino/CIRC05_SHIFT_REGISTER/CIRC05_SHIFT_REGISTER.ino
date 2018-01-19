@@ -1,21 +1,10 @@
-/*     ---------------------------------------------------------
- *     |  Arduino Experimentation Kit Example Code             |
- *     |  CIRC-05 .: 8 More LEDs :. (74HC595 Shift Register)   |
- *     ---------------------------------------------------------
- * 
- * We have already controlled 8 LEDs however this does it in a slightly
- * different manner. Rather than using 8 pins we will use just three
- * and an additional chip.
- *
- *
- */
-
+// CIRC05 - 8 More LEDs
 
 //Pin Definitions
 //Pin Definitions
-//The 74HC595 uses a serial communication 
+//The 74HC595 uses a serial communication
 //link which has three pins
-int data = 2; 
+int data = 2;
 int clock = 3;
 int latch = 4;
 
@@ -23,7 +12,7 @@ int latch = 4;
 int ledState = 0;
 const int ON = HIGH;
 const int OFF = LOW;
-                        
+
 
 /*
  * setup() - this function runs once when you turn your Arduino on
@@ -32,8 +21,8 @@ const int OFF = LOW;
 void setup()
 {
   pinMode(data, OUTPUT);
-  pinMode(clock, OUTPUT);  
-  pinMode(latch, OUTPUT);  
+  pinMode(clock, OUTPUT);
+  pinMode(latch, OUTPUT);
 }
 
 /*
@@ -45,7 +34,7 @@ void loop()                     // run over and over again
   int delayTime = 100; //the number of milliseconds to delay between LED updates
   for(int i = 0; i < 256; i++){
    updateLEDs(i);
-   delay(delayTime); 
+   delay(delayTime);
   }
 }
 
@@ -65,11 +54,11 @@ void updateLEDs(int value){
  * updateLEDsLong() - sends the LED states set in ledStates to the 74HC595
  * sequence. Same as updateLEDs except the shifting out is done in software
  * so you can see what is happening.
- */ 
+ */
 void updateLEDsLong(int value){
   digitalWrite(latch, LOW);    //Pulls the chips latch low
   for(int i = 0; i < 8; i++){  //Will repeat 8 times (once for each bit)
-  int bit = value & B10000000; //We use a "bitmask" to select only the eighth 
+  int bit = value & B10000000; //We use a "bitmask" to select only the eighth
                                //bit in our number (the one we are addressing this time through
   value = value << 1;          //we move our number up one bit value so next time bit 7 will be
                                //bit 8 and we will do our math on it
@@ -88,7 +77,7 @@ void updateLEDsLong(int value){
 int bits[] = {B00000001, B00000010, B00000100, B00001000, B00010000, B00100000, B01000000, B10000000};
 int masks[] = {B11111110, B11111101, B11111011, B11110111, B11101111, B11011111, B10111111, B01111111};
 /*
- * changeLED(int led, int state) - changes an individual LED 
+ * changeLED(int led, int state) - changes an individual LED
  * LEDs are 0 to 7 and state is either 0 - OFF or 1 - ON
  */
  void changeLED(int led, int state){

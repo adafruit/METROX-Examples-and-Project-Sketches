@@ -1,10 +1,4 @@
-/*
-   Metro Explorers Guide
-   PROJ06 - IR Laser Pet Toy
-   by Brent Rubell and Asher Lieber for Adafruit Industries.   Support Open Source, buy Adafruit!
-
-   Note: this sketch requires IRLIB2.x
-*/
+// PROJ06 - IR Pet Toy
 
 #include <IRLibAll.h>
 #include <Servo.h>
@@ -67,15 +61,15 @@ void loop()
           // move servo
           pos = min(180, pos + Speed);
           break;
-        case RIGHT_ARROW:   
+        case RIGHT_ARROW:
           pos=max(0,pos-Speed);
           break;
-        case BUTTON_0:      
-          pos=random(0,180); 
+        case BUTTON_0:
+          pos=random(0,180);
           break;
         }
-       // tell servo 'move to variable pos' 
-       myServo.write(pos); 
+       // tell servo 'move to variable pos'
+       myServo.write(pos);
        Previous=myDecoder.value;
       }
     myReceiver.enableIRIn();

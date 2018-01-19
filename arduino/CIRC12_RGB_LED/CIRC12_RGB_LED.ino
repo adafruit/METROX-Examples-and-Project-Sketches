@@ -1,4 +1,4 @@
-// CIRC12 - RGB LED 
+// CIRC12 - Colorful Light
 
 //  RGB LED PINS
 // three pins:

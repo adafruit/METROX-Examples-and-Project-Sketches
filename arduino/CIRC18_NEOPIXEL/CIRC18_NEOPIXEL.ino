@@ -1,13 +1,8 @@
 /*
- * (CIRC18) Metro Express NeoPixel 
- * this circuit was designed for use with the Metro Explorers Guide on Learn.Adafruit.com
- * 
- * note: this code does NOT run on the Metro, only the Metro EXPRESS. 
- * 
- * by Brent Rubell for Adafruit Industries.
- */
-
-// Include the Adafruit Neopixel Library 
+    CIRC18 - NeoPixel
+    Note: This is for the Metro Express ONLY
+*/
+// Include the Adafruit Neopixel Library
 #include <Adafruit_NeoPixel.h>
 
 // The default pin for the NeoPixel on the Metro Express is Pin #40
@@ -16,7 +11,7 @@
 // metroPixel takes in both the number of pixels (1, the built-in) and the pin)
 Adafruit_NeoPixel metroPixel = Adafruit_NeoPixel(1, METROPIXELPIN);
 
-/* Colors */ 
+/* Colors */
 // note: the max. of colors in these arrays is 220 instead of 255 (super-bright!!)
 const int RED[ ] = {155, 0, 0};
 const int WHITE[ ] = {155, 155, 155};
@@ -24,8 +19,8 @@ const int BLUE[ ] = {0, 0, 255};
 const int BLACK [ ] = {0, 0, 0};
 
 void setup() {
-  // init. the NeoPixel library 
-  metroPixel.begin(); 
+  // init. the NeoPixel library
+  metroPixel.begin();
 }
 
 void loop() {
@@ -38,21 +33,21 @@ void loop() {
   // display blue on the Metro Express neopixel
   pixelWrite(BLUE);
   delay(1000);
-  
-  // Sparkle the Neopixel 
+
+  // Sparkle the Neopixel
   // pixelSparkle();
 }
 
 // takes in a pre-defined color (integer array) and sets the pixel to that color
-void pixelWrite(const int* color) { 
+void pixelWrite(const int* color) {
   metroPixel.setPixelColor(0, metroPixel.Color(color[0],color[1],color[2]));
   // write the pixel color to the Metro's Neopixel
-  metroPixel.show(); 
+  metroPixel.show();
 
 }
 
-// flashes the neopixel on and off rapidly 
-void pixelSparkle() { 
+// flashes the neopixel on and off rapidly
+void pixelSparkle() {
   for(int i = 0; i < 5; i++) {
     pixelWrite(BLACK);
     delay(50);
@@ -60,14 +55,3 @@ void pixelSparkle() {
     delay(50);
   }
 }
-
-
-
-
-
-
-
-
-
-
-

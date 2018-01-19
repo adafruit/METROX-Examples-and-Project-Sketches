@@ -1,8 +1,4 @@
-/* PROJ05: Metro Media Remote
-*  Desc: Control VLC with your Adafruit Metro M0 Express!
-* by Brent Rubell and Asher Liber for Adafruit Industries
-* Requires IRLib2.x Library
-*/
+// PROJ05 - IR Media Controller
 
 #include <IRLibAll.h>
 #include <Keyboard.h>

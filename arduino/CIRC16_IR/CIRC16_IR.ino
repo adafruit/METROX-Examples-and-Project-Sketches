@@ -1,13 +1,6 @@
-/*
- * Metro Explorers Guide
- * CIRC16: IR Sensor 
- * 
- * Desc: Turns on and off a 5mm Red LED with Mini Remote (NEC)
- * by Brent Rubell for Adafruit Industries.   Support Open Source, buy Adafruit!
- * 
- * Note: this sketch requires IRLIB2.x
- */
-// include all IRLib 2.x libraries 
+// CIRC16 - IR Sensor 
+
+// include all IRLib 2.x libraries
 #include <IRLibAll.h>
 
 // These values are for the Adafruit Mini Remote (using the NEC Protocol)
@@ -16,7 +9,7 @@
 uint32_t Previous;
 // button(s)
 #define BUTTON_0 0xfd30cf
-#define BUTTON_1 0xfd08f7  
+#define BUTTON_1 0xfd08f7
 #define BUTTON_2 0xfd8877
 #define BUTTON_3 0xfd48b7
 #define BUTTON_4 0xfd28d7
@@ -26,9 +19,9 @@ uint32_t Previous;
 #define BUTTON_8 0xfd9867
 #define BUTTON_9 0xfd58a7
 
-// pin for the reciever 
+// pin for the reciever
 IRrecv myReceiver(6);
-// decoder class 
+// decoder class
 IRdecode myDecoder;
 
 // LED PIN
@@ -38,7 +31,7 @@ void setup() {
   // set the ledPin as an output
   pinMode(ledPin, OUTPUT);
   // enable the receiver
-  myReceiver.enableIRIn(); 
+  myReceiver.enableIRIn();
 }
 
 void loop() {
@@ -51,12 +44,12 @@ void loop() {
       // if there
       if(myDecoder.value == 0xFFFFFFFF) {
         // keep the led set to the last button value
-        myDecoder.value = Previous; 
+        myDecoder.value = Previous;
       }
       // based on myDecoder.value, switch between button codes
       switch(myDecoder.value) {
         // Turn on the LED
-        case BUTTON_1:  
+        case BUTTON_1:
           digitalWrite(ledPin, HIGH);
           break;
         // otherwise, turn off the LED

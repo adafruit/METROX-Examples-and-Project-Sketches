@@ -1,10 +1,4 @@
-/*
- * (PROJ04) Metro (and Metro Express!) Fidget Spinner Tachometer
- * Desc: Count fidget spinner RPMs (and beat your high scores)
- * 
- * Original code by Tony Dicola for Adafruit Industries
- * by Brent Rubell and Asher Lieber for the Metro Explorers Guide
-*/
+// PROJ04 - Fidget Spinner Tachometer
 
 // include the LCD library code:
 #include <LiquidCrystal.h>
@@ -42,23 +36,23 @@ void setup() {
 }
 
 void loop() {
-  int sensorCalibrate = 0; 
+  int sensorCalibrate = 0;
   // Set depending on light balance
   threshold = 40;
 
-  // PAUSE between measurements 
+  // PAUSE between measurements
   lcd.clear();
   lcd.print("GET READY...");
   analogWrite(led, 255);
 
   // pause between sampling sensor
-  // shown as a countdown on the screen! 
+  // shown as a countdown on the screen!
   for (int i = 3500; i > 0; i--) {
     lcd.setCursor(0,1);
     lcd.print(i/100);
   }
-  
-  
+
+
   // init. empty sample array
   uint16_t samples[SAMPLE_DEPTH] = {0};
   // start time
@@ -71,7 +65,7 @@ void loop() {
   lcd.print("score: ");
   lcd.setCursor(10,1);
   lcd.print(rpmHighScore);
-  
+
   for (int i = 0; i < SAMPLE_DEPTH; i++) {
     // sample the photo light sensor
     samples[i] = analogRead(photoSensor);
@@ -94,11 +88,11 @@ void loop() {
 
     delayMicroseconds(SAMPLE_PERIOD_US);
   }
-  
+
   // time elapsed (uS)
   uint32_t elapsed_uS = micros() - start;
   // time elapsed (sec)
-  float elapsed = elapsed_uS / 1000000.0; 
+  float elapsed = elapsed_uS / 1000000.0;
 
 
   // Find the min and max values in the collected samples.
@@ -109,7 +103,7 @@ void loop() {
     maxval = max(maxval, samples[i]);
   }
 
-  // Serial Monitor Values 
+  // Serial Monitor Values
   Serial.print("\n Samples taken, : ");
   Serial.print(elapsed, 3);
   Serial.print(" seconds");
@@ -140,13 +134,13 @@ void loop() {
   for (int i=1; i<SAMPLE_DEPTH; ++i) {
     uint16_t p0 = samples[i-1];
     uint16_t p1 = samples[i];
-    if ((p1 == midpoint) || 
+    if ((p1 == midpoint) ||
         ((p0 < midpoint) && (p1 > midpoint)) ||
         ((p0 > midpoint) && (p1 < midpoint))) {
       crossings += 1;
     }
   }
-  
+
   // Compute signal frequency, RPM, and period.
   // The period is the amount of time it takes for a complete
   // sine wave cycle to occur.  You can calculate this by dividing the
@@ -162,9 +156,9 @@ void loop() {
   Serial.print(crossings);
   Serial.print("\n Elapsed: ");
   Serial.print(elapsed);
-  
+
   float period = elapsed / (crossings / 2.0 / SPINNER_ARMS);
-  
+
   Serial.print("\n Period: ");
   Serial.print(period);
 
@@ -175,7 +169,7 @@ void loop() {
   float frequency = 1.0 / period;
   float rpm = frequency * 60.0;
 
-  
+
   // Print out the measured values!
   Serial.print("Frequency: ");
   Serial.print(frequency, 3);
@@ -190,8 +184,8 @@ void loop() {
   lcd.setCursor(1,0);
   lcd.print(rpm);
   delay(2000);
-  
-  // high score checker 
+
+  // high score checker
   if(rpm > rpmHighScore) {
     rpmHighScore = rpm;
     lcd.clear();
@@ -200,7 +194,7 @@ void loop() {
     lcd.setCursor(0,1);
     lcd.print("high score!");
     delay(2000);
-    
+
   }
 
 }

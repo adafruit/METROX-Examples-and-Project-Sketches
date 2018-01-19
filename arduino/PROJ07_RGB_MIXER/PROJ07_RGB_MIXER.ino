@@ -1,15 +1,11 @@
-/* 
- *  PROJ07 - RGB Color Mixer
- *  
- *  by Brent Rubell for Adafruit Industries
- */
+// PROJ07 - RGB Color Mixer
 
 // RGB LED Pins
 int rgbLED[] = {9, 10, 11};
 
 // trim potentiometer pin
 int trimPin = A0;
-// button pin 
+// button pin
 const int buttonPin = 12;
 
 // button state
@@ -37,9 +33,9 @@ void setup() {
 }
 
 void loop() {
-  // read the value of the push-button 
+  // read the value of the push-button
   buttonState = digitalRead(buttonPin);
-  
+
   if(buttonState == LOW) {
     delay(2);
     // reset the colorIdx if it goes past Blue (colorIdx = 3)
@@ -53,12 +49,12 @@ void loop() {
         red = map(trimValue, 0, 670, 0, 255);
         CURRENTRGB[0] = red;
         break;
-      case 2: 
+      case 2:
         trimValue = analogRead(trimPin);
         green = map(trimValue, 0, 670, 0, 255);
         CURRENTRGB[1] = green;
         break;
-      case 3: 
+      case 3:
         trimValue = analogRead(trimPin);
         blue = map(trimValue, 0, 670, 0, 255);
         CURRENTRGB[2] = blue;
@@ -78,13 +74,13 @@ void loop() {
     Serial.println("blue:");
     Serial.print(CURRENTRGB[2]);
     Serial.println(" ");
-  
+
     setColor(rgbLED, CURRENTRGB);
     delay(1000);
 
-    
+
   }
-  
+
 }
 
 void setColor(int* led, const boolean* color) {
