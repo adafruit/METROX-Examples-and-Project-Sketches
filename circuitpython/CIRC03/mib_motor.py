@@ -1,44 +1,40 @@
-# CIRC03 - Blinking LED make it better
-# (CircuitPython)
-# this circuit was designed for use with the Metro Express Explorers Guide on Learn.Adafruit.com 
+"""
+'mib_motor.py'.
 
-# by Limor Fried/Ladyada for Adafruit Industries.
+=================================================
+spins a DC motor using pulseio
+"""
 
-# import required libraries
-import digitalio                                        
-import pulseio                                          
+import time
 import board
-import time                                             
-                                                        
-motorPin = board.D9                                           
-motor = pulseio.PWMOut(motorPin, frequency=1000)
-                                                        
-def motorOnThenOffwithSpeed():
-    # 80%
-    onSpeed = 0.80
-    onTime = 2.5
-    # 10%
-    offSpeed = 0.10
-    offTime = 1.0
-    motor.duty_cycle = int(onSpeed * 65535)
-    time.sleep(onTime)
-    motor.duty_cycle = int(offSpeed * 65535)
-    time.sleep(offTime)
+import pulseio
 
-def motorAcceleration():
-    # seconds between each speed step
-    delayTime = 0.05
+motor = pulseio.PWMOut(board.D9, frequency=1000)
 
-    # Accelerates the motor                             
+
+def motor_on_then_off_with_speed():
+    """turns the motor on, then off, using PWM."""
+    on_speed = 0.80
+    on_time = 2.5
+    off_speed = 0.10
+    off_time = 1.0
+    motor.duty_cycle = int(on_speed * 65535)
+    time.sleep(on_time)
+    motor.duty_cycle = int(off_speed * 65535)
+    time.sleep(off_time)
+
+
+def motor_acceleration():
+    """accelerates the motor forwards and backwards."""
+    delay_time = 0.05
     for speed in range(0, 100, 1):
         motor.duty_cycle = int(speed / 100 * 65535)
-        time.sleep(delayTime)         
-
-    # Decelerates the motor                             
+        time.sleep(delay_time)
     for speed in range(100, 0, -1):
         motor.duty_cycle = int(speed / 100 * 65535)
-        time.sleep(delayTime)         
-                                                        
+        time.sleep(delay_time)
+
+
 while True:
-    motorOnThenOffwithSpeed()        
-    #motorAcceleration()
+    motor_on_then_off_with_speed()
+    # motor_acceleration()

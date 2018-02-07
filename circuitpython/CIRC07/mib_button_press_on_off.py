@@ -1,22 +1,24 @@
-# CIRC07 - Button Pressing make it better on_off
-# (Circuit Python)                                                                                  
-# this circuit was designed for use with the Metro Express Explorers Guide on Learn.Adafruit.com    
-                                                                                                    
-# by Limor Fried/Ladyada for Adafruit Industries.                                                   
+"""
+'button_press_on_off.py'.
 
-import digitalio
+=================================================
+lightswitch-like operation with two buttons and a led
+"""
+
 import board
-import time
+import digitalio
 
-led = digitalio.DigitalInOut(board.D13)                    
+led = digitalio.DigitalInOut(board.D13)
+btn1 = digitalio.DigitalInOut(board.D2)
+btn2 = digitalio.DigitalInOut(board.D3)
+
 led.switch_to_output()
-button1 = digitalio.DigitalInOut(board.D2)
-button1.switch_to_input()
-button2 = digitalio.DigitalInOut(board.D3)
-button2.switch_to_input()
+btn1.switch_to_input()
+btn2.switch_to_input()
 
-while True:        
-    if not button1.value:
+
+while True:
+    if not btn1.value:
         led.value = False
-    elif not button2.value:
+    elif not btn2.value:
         led.value = True
