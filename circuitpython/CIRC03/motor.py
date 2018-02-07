@@ -1,31 +1,27 @@
-# CIRC03 - Spin Motor Spin
-# (CircuitPython)
-# this circuit was designed for use with the Metro Express Explorers Guide on Learn.Adafruit.com
+"""
+'motor.py'.
 
-# by Limor Fried/Ladyada for Adafruit Industries.
+=================================================
+spin a DC motor using digitalio
+"""
 
-# import required libraries
-import digitalio                                            
-import pulseio                                              
+import time
 import board
-import time                                                 
-                                                            
-motorPin = board.D9                                               
-                                                            
-motor = digitalio.DigitalInOut(motorPin)                    
-# switch motor to output mode
-motor.switch_to_output()                                    
-                                                            
-def motorOnThenOff():                                       
-    onTime = 2.5                                            
-    offTime = 1.0                                           
-    motor.value = True                                      
-    # wait for onTime seconds
-    time.sleep(onTime)                                      
-    motor.value = False                                     
-    # wait for offTime seconds
-    time.sleep(offTime)                                     
-                                                            
-# run this forever
-while True:                                                 
-    motorOnThenOff()
+import digitalio
+
+motor = digitalio.DigitalInOut(board.D9)
+motor.switch_to_output()
+
+
+def motor_on_then_off():
+    """toggles the motor."""
+    on_time = 2.5
+    off_time = 1.0
+    motor.value = True
+    time.sleep(on_time)
+    motor.value = False
+    time.sleep(off_time)
+
+
+while True:
+    motor_on_then_off()

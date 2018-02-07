@@ -1,22 +1,22 @@
-# CIRC09 - Light
-# (CircuitPython)
-# this circuit was designed for use with the Metro Express Explorers Guide on Learn.Adafruit.com
+"""
+'photo_sensor.py'.
 
-# by Limor Fried/Ladyada for Adafruit Industries.
-
+=================================================
+<<<<<<< HEAD
+uses a photo sensor to control a led
+=======
+uses LIGHT to control a LED
+>>>>>>> adafruit/master
+"""
 import analogio
-import pulseio
 import board
-import time
+import pulseio
 from simpleio import map_range
 
 led = pulseio.PWMOut(board.D9)
-light = analogio.AnalogIn(board.A0)
+photo_sensor = analogio.AnalogIn(board.A0)
+
 
 while True:
-    print(light.value)
-    # map reasonable light values to our LED brightness
-    mapped = map_range(light.value, 20000, 65000, 0, 65535)
-    print(mapped)
-    # change brightness of LED
-    led.duty_cycle = int(mapped)
+    photo_sensor_val = map_range(photo_sensor.value, 20000, 32766, 0, 32766)
+    led.duty_cycle = int(photo_sensor_val)

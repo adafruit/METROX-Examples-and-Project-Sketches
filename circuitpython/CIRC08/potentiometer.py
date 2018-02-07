@@ -1,25 +1,25 @@
-# CIRC08 - Twisting
-# (CircuitPython)
-# this circuit was designed for use with the Metro Express Explorers Guide on Learn.Adafruit.com
+"""
+'potentiometer.py'.
 
-# by Limor Fried/Ladyada for Adafruit Industries.
-
+=================================================
+control a led's brightness using a potentiometer
+"""
+import time
 import digitalio
 import analogio
 import board
-import time
 
 led = digitalio.DigitalInOut(board.D13)
+pot = analogio.AnalogIn(board.A0)
 led.switch_to_output()
-pot = analogio.AnalogIn(A0)
 
-sensorval = 0
+sensor_val = 0
 
 while True:
     # potentiometer value/max potentiometer value
-    sensorval = pot.value / 65536
-    print(sensorval)
+    sensor_val = pot.value / 65536
+    print(sensor_val)
     led.value = True
-    time.sleep(sensorval)
+    time.sleep(sensor_val)
     led.value = False
-    time.sleep(sensorval)
+    time.sleep(sensor_val)
