@@ -1,50 +1,51 @@
 /*
-  Analog Input
- Demonstrates analog input by reading an analog sensor on analog pin 0 and
- turning on and off a light emitting diode(LED)  connected to digital pin 13.
- The amount of time the LED will be on and off depends on
- the value obtained by analogRead().
+  Button
 
- The circuit:
- * Potentiometer attached to analog input 0
- * center pin of the potentiometer to the analog pin
- * one side pin (either one) to ground
- * the other side pin to +5V
- * LED anode (long leg) attached to digital output 13
- * LED cathode (short leg) attached to ground
+  Turns on and off a light emitting diode(LED) connected to digital pin 13,
+  when pressing a pushbutton attached to pin 2.
 
- * Note: because most Arduinos have a built-in LED attached
- to pin 13 on the board, the LED is optional.
+  The circuit:
+  - LED attached from pin 13 to ground
+  - pushbutton attached to pin 2 from +5V
+  - 10K resistor attached to pin 2 from ground
 
+  - Note: on most Arduinos there is already an LED on the board
+    attached to pin 13.
 
- Created by David Cuartielles
- modified 30 Aug 2011
- By Tom Igoe
+  created 2005
+  by DojoDave <http://www.0j0.org>
+  modified 30 Aug 2011
+  by Tom Igoe
 
- This example code is in the public domain.
+  This example code is in the public domain.
 
- http://www.arduino.cc/en/Tutorial/AnalogInput
+  http://www.arduino.cc/en/Tutorial/Button
+*/
 
- */
+// constants won't change. They're used here to set pin numbers:
+const int buttonPin = 2;     // the number of the pushbutton pin
+const int ledPin =  13;      // the number of the LED pin
 
-int sensorPin = A0;    // select the input pin for the potentiometer
-int ledPin = 13;      // select the pin for the LED
-int sensorValue = 0;  // variable to store the value coming from the sensor
+// variables will change:
+int buttonState = 0;         // variable for reading the pushbutton status
 
 void setup() {
-  // declare the ledPin as an OUTPUT:
+  // initialize the LED pin as an output:
   pinMode(ledPin, OUTPUT);
+  // initialize the pushbutton pin as an input:
+  pinMode(buttonPin, INPUT);
 }
 
 void loop() {
-  // read the value from the sensor:
-  sensorValue = analogRead(sensorPin);
-  // turn the ledPin on
-  digitalWrite(ledPin, HIGH);
-  // stop the program for <sensorValue> milliseconds:
-  delay(sensorValue);
-  // turn the ledPin off:
-  digitalWrite(ledPin, LOW);
-  // stop the program for for <sensorValue> milliseconds:
-  delay(sensorValue);
+  // read the state of the pushbutton value:
+  buttonState = digitalRead(buttonPin);
+
+  // check if the pushbutton is pressed. If it is, the buttonState is HIGH:
+  if (buttonState == HIGH) {
+    // turn LED on:
+    digitalWrite(ledPin, HIGH);
+  } else {
+    // turn LED off:
+    digitalWrite(ledPin, LOW);
+  }
 }
