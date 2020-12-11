@@ -19,10 +19,15 @@ jobs:
     - name: pre-install
       run: bash ci/actions_install.sh
 
-    # manually install extra libraries
+    # manually install IRLib2 correctly
     - name: extra libraries
       run: |
-        git clone --quiet https://github.com/cyborg5/IRLib2.git /home/runner/Arduino/libraries/IRLib2
+        git clone --quiet https://github.com/cyborg5/IRLib2.git
+        mv IRLib2/IRLib2 /home/runner/Arduino/libraries/IRLib2
+        mv IRLib2/IRLibFreq /home/runner/Arduino/libraries/IRLibFreq
+        mv IRLib2/IRLibProtocols /home/runner/Arduino/libraries/IRLibProtocols
+        mv IRLib2/IRLibRecv /home/runner/Arduino/libraries/IRLibRecv
+        mv IRLib2/IRLibRecvPCI /home/runner/Arduino/libraries/IRLibRecvPCI
 
     - name: test platforms
       run: python3 ci/build_platform.py metro_m0
