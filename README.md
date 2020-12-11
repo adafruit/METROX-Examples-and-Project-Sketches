@@ -1,8 +1,8 @@
-# METROX - Arduino 
+# Experimenter's Guide for Metro - Arduino
 
-[![Build Status](https://travis-ci.org/adafruit/METROX-Examples-and-Project-Sketches.svg?branch=master)](https://travis-ci.org/adafruit/METROX-Examples-and-Project-Sketches)
+[![Build Status](https://github.com/adafruit/METROX-Examples-and-Project-Sketches/workflows/Arduino%20Library%20CI/badge.svg)](https://github.com/adafruit/METROX-Examples-and-Project-Sketches/actions)
 
-Code for the code for the circuits and projects on the [Metro Explorer Guide for Arduino](https://learn.adafruit.com/experimenters-guide-for-metro/intro)
+Arduino sketches for [Experimenter's Guide for Metro](https://learn.adafruit.com/experimenters-guide-for-metro/intro) projects.
 
 
 ## Contributing to this repository:
