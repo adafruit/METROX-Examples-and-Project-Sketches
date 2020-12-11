@@ -30,7 +30,7 @@ jobs:
         mv IRLib2/IRLibRecvPCI /home/runner/Arduino/libraries/IRLibRecvPCI
 
     - name: test platforms
-      run: python3 ci/build_platform.py metro_m0
+      run: python3 ci/build_platform.py uno
 
     - name: clang
       run: python3 ci/run-clang-format.py -e "ci/*" -e "bin/*" -r . 
