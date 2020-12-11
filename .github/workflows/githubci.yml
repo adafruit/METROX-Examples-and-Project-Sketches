@@ -19,7 +19,7 @@ jobs:
     - name: pre-install
       run: bash ci/actions_install.sh
 
-    # manually install IRLib2
+    # manually install extra libraries
     - name: extra libraries
       run: |
         git clone --quiet https://github.com/cyborg5/IRLib2.git /home/runner/Arduino/libraries/IRLib2

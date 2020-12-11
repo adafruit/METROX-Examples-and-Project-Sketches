@@ -1,1 +1,1 @@
-depends=Adafruit NeoPixel, 
+depends=Adafruit NeoPixel, LiquidCrystal
