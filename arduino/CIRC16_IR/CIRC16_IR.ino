@@ -32,7 +32,7 @@ IRrecv myReceiver(6);
 IRdecode myDecoder;
 
 // LED PIN
-int ledPin = 13;
+int ledPin = 11;
 
 void setup() {
   // set the ledPin as an output
