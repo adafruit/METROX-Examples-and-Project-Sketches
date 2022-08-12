@@ -71,10 +71,3 @@ void loop() {
     myReceiver.enableIRIn();
   }
 }
-
-// sets the color of the RGB LED
-void setColor(int* led, const boolean* color) {
-  for(int i = 0; i < 3; i++) {
-    digitalWrite(led[i], color[i]);
-  }
-}
